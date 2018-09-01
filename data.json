@@ -1,0 +1,188 @@
+[
+    {
+      "id": 1,
+      "project_id": 123,
+      "selected_image": "https://someurl.com/images/123",
+      "type": "kitchen",
+      "technical_tags": {
+        "countertop_design": "gris moro",
+        "countertop_type": "granito",
+        "dimensions": {
+          "aerial": 5,
+          "basal": 8,
+          "countertop": 10
+        },
+        "drawer_count": 3,
+        "door_count": 15,
+        "estimated_price": 4500000
+      },
+      "tags": [
+        "Tonalidad:unicolor",
+        "Tonalidad:clásicos",
+        "Contraste:bajo contraste",
+        "Tamaño:mediana",
+        "Estilo:sin estilo",
+        "Visualización:pesada",
+        "Volumetrías:basal y aéreo",
+        "Accesorios:tiradores simples",
+        "Modulos:poco cajón"
+      ]
+    },
+    {
+      "id": 2,
+      "project_id": 122,
+      "selected_image": "https://someurl.com/images/122",
+      "type": "kitchen",
+      "technical_tags": {
+        "countertop_design": "blanco",
+        "countertop_type": "cuarzo",
+        "dimensions": {
+          "aerial": 6,
+          "basal": 6,
+          "countertop": 6
+        },
+        "drawer_count": 9,
+        "door_count": 6,
+        "estimated_price": 6500000
+      },
+      "tags": [
+        "tamaño:mediana",
+        "tonalidad:bicolor",
+        "tonalidad:bicolor horizontal",
+        "cubierta:cuarzo",
+        "color: blanco", 
+        "color: cafe",
+        "tonalidad:clasicos",
+        "lineas:simples",
+        "contraste:alto contraste",
+        "estilo: limpia",
+        "valorcasa: 4",
+        "configuracion:lineal",
+        "accesorios:tiradores simples",
+        "accesorios:sin tiradores",
+        "espesorcubierta: gruesa"
+      ]
+    },
+    {
+      "id": 3,
+      "project_id": 121,
+      "selected_image": "https://someurl.com/images/121",
+      "type": "kitchen",
+      "technical_tags": {
+        "countertop_design": "blanco",
+        "countertop_type": "cuarzo",
+        "dimensions": {
+          "aerial": 4,
+          "basal": 10,
+          "countertop": 14
+        },
+        "drawer_count": 16,
+        "door_count": 2,
+        "estimated_price": 8500000
+      },
+      "tags": [
+        "Tamaño:grande",
+        "Color:blanco",
+        "Espacialidad:aireada",
+        "Configuracion:isla",
+        "Estilo:minimalista",
+        "estilo:Limpia",
+        "Estilo:metálicos",
+        "Estilo:pulcro",
+        "Estilo:formal",
+        "Materialidad:melamina",
+        "Materialidad:metal",
+        "Textura:tablero liso",
+        "Texture:cubierta lisa",
+        "tonalidad: unicolor",
+        "Tonalidad: monocromatico",
+        "Tonalidad: claros",
+        "Luminosidad: clara",
+        "Lineas: simple",
+        "Cubierta: cuarzo doble cubierta",
+        "Accesorios:sin tiradores",
+        "Valor casa: 4",
+        "Volumetrías: solo basal"
+      ]
+    },
+    {
+      "id": 4,
+      "project_id": 125,
+      "selected_image": "https://someurl.com/images/125",
+      "type": "kitchen",
+      "technical_tags": {
+        "countertop_design": "negro",
+        "countertop_type": "cuarzo",
+        "dimensions": {
+          "aerial": 4,
+          "basal": 4,
+          "countertop": 4
+        },
+        "drawer_count": 4,
+        "door_count": 10,
+        "estimated_price": 4000000
+      },
+      "tags": [
+        "Tamaño: mediana",
+        "Tonalidad: clara",
+        "Cubierta: negra", 
+        "Cubierta: cuarzo",
+        "Lineas: saturada",
+        "Accesorios: tiradores simples",
+        "Configuracion: L",
+        "Configuracion: Isla",
+        "Volumetría: basal y aéreo",
+        "Tonalidad: desaturado",
+        "Contraste: bajo contraste",
+        "Melamina: maderas claras",
+        "Tonalidad: cenizas",
+        "Espacialidad: recargada",
+        "Especialidad: compacta",
+        "Valor casa: 3",
+        "Materialidad: melamina"
+      ]
+    },
+    {
+      "id": 4,
+      "project_id": 125,
+      "selected_image": "https://someurl.com/images/125",
+      "type": "kitchen",
+      "technical_tags": {
+        "countertop_design": "negro",
+        "countertop_type": "cuarzo",
+        "dimensions": {
+          "aerial": 3,
+          "basal": 3,
+          "countertop": 3
+        },
+        "drawer_count": 12,
+        "door_count": 4,
+        "estimated_price": 4000000
+      },
+      "tags": [
+        "Tonalidad: bicolor horizontal",
+        "Tamaño: pequeña ",
+        "Tonalidad: madera clara",
+        "Tonalidad: calidos",
+        "Luminosidad:claro",
+        "Contraste: bajo contraste",
+        "Lineas: simples",
+        "Espacialidad: alta",
+        "Espacialidad: apretada",
+        "Estilo: fresco",
+        "Estilo: jovial",
+        "Estilo: pulcro ",
+        "Accesorios: sin tiradores",
+        "Accesorios: puertas vidriada",
+        "Modulos: predominantemente cajones",
+        "Accesorios: sistemas",
+        "Configuracion: lineal doble",
+        "Textura: cubierta color liso",
+        "Textura: madera",
+        "Materialidad: contrastado",
+        "Cubierta: cuarzo",
+        "Color: blanco",
+        "Espesor de cubierta: grueso"
+      ]
+    }
+]
