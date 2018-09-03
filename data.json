@@ -1,188 +1,937 @@
 [
-    {
-      "id": 1,
-      "project_id": 123,
-      "selected_image": "https://someurl.com/images/123",
-      "type": "kitchen",
-      "technical_tags": {
-        "countertop_design": "gris moro",
-        "countertop_type": "granito",
-        "dimensions": {
-          "aerial": 5,
-          "basal": 8,
-          "countertop": 10
-        },
-        "drawer_count": 3,
-        "door_count": 15,
-        "estimated_price": 4500000
-      },
-      "tags": [
-        "Tonalidad:unicolor",
-        "Tonalidad:clásicos",
-        "Contraste:bajo contraste",
-        "Tamaño:mediana",
-        "Estilo:sin estilo",
-        "Visualización:pesada",
-        "Volumetrías:basal y aéreo",
-        "Accesorios:tiradores simples",
-        "Modulos:poco cajón"
-      ]
+  {
+    "id": 11,
+    "project_id": 5855,
+    "photo_id": 11235,
+    "tags": null,
+    "created_at": "2018-08-27 16:19:49.678598",
+    "updated_at": "2018-09-03 01:43:27.321113",
+    "technical_tags": {
+      "countertop_type": "Granito",
+      "countertop_design": "Melamina Blanco",
+      "dimension_aerial": "2.5",
+      "dimension_basal": "2.5",
+      "dimension_countertop": "2.5",
+      "drawer_count": "2",
+      "door_count": "7",
+      "estimated_price": "1000000",
+      "equipment": "",
+      "zones": [
+        "Santiago Poniente",
+        "Santiago Sur",
+        "Concepción",
+        "Santiago Oriente",
+        "Santiago Norte"
+      ],
+      "type": "Cocina"
     },
-    {
-      "id": 2,
-      "project_id": 122,
-      "selected_image": "https://someurl.com/images/122",
-      "type": "kitchen",
-      "technical_tags": {
-        "countertop_design": "blanco",
-        "countertop_type": "cuarzo",
-        "dimensions": {
-          "aerial": 6,
-          "basal": 6,
-          "countertop": 6
-        },
-        "drawer_count": 9,
-        "door_count": 6,
-        "estimated_price": 6500000
-      },
-      "tags": [
-        "tamaño:mediana",
-        "tonalidad:bicolor",
-        "tonalidad:bicolor horizontal",
-        "cubierta:cuarzo",
-        "color: blanco", 
-        "color: cafe",
-        "tonalidad:clasicos",
-        "lineas:simples",
-        "contraste:alto contraste",
-        "estilo: limpia",
-        "valorcasa: 4",
-        "configuracion:lineal",
-        "accesorios:tiradores simples",
-        "accesorios:sin tiradores",
-        "espesorcubierta: gruesa"
-      ]
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1515173754/uio5fvkrmf6wkddcnek9.jpg"
+  },
+  {
+    "id": 12,
+    "project_id": 5856,
+    "photo_id": 11164,
+    "tags": null,
+    "created_at": "2018-08-28 04:16:41.442661",
+    "updated_at": "2018-09-03 01:54:50.094662",
+    "technical_tags": {
+      "countertop_type": "Cuarzo",
+      "countertop_design": "Melamina Nogal Ceniza",
+      "dimension_aerial": "2.8",
+      "dimension_basal": "3.8",
+      "dimension_countertop": "4.8",
+      "drawer_count": "5",
+      "door_count": "13",
+      "estimated_price": "2400000",
+      "equipment": "puertas de aluminio, puertas de vidrio, basurero",
+      "zones": [
+        "Santiago Poniente",
+        "Santiago Sur",
+        "Concepción",
+        "Santiago Oriente",
+        "Santiago Norte"
+      ],
+      "type": "Cocina"
     },
-    {
-      "id": 3,
-      "project_id": 121,
-      "selected_image": "https://someurl.com/images/121",
-      "type": "kitchen",
-      "technical_tags": {
-        "countertop_design": "blanco",
-        "countertop_type": "cuarzo",
-        "dimensions": {
-          "aerial": 4,
-          "basal": 10,
-          "countertop": 14
-        },
-        "drawer_count": 16,
-        "door_count": 2,
-        "estimated_price": 8500000
-      },
-      "tags": [
-        "Tamaño:grande",
-        "Color:blanco",
-        "Espacialidad:aireada",
-        "Configuracion:isla",
-        "Estilo:minimalista",
-        "estilo:Limpia",
-        "Estilo:metálicos",
-        "Estilo:pulcro",
-        "Estilo:formal",
-        "Materialidad:melamina",
-        "Materialidad:metal",
-        "Textura:tablero liso",
-        "Texture:cubierta lisa",
-        "tonalidad: unicolor",
-        "Tonalidad: monocromatico",
-        "Tonalidad: claros",
-        "Luminosidad: clara",
-        "Lineas: simple",
-        "Cubierta: cuarzo doble cubierta",
-        "Accesorios:sin tiradores",
-        "Valor casa: 4",
-        "Volumetrías: solo basal"
-      ]
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1515162642/siegj6fz9my1sxdn1gja.jpg"
+  },
+  {
+    "id": 13,
+    "project_id": 5881,
+    "photo_id": 610,
+    "tags": null,
+    "created_at": "2018-08-28 04:16:48.917097",
+    "updated_at": "2018-09-03 02:00:11.194173",
+    "technical_tags": {
+      "countertop_type": "Granito",
+      "countertop_design": "Melamina Coigüe",
+      "dimension_aerial": "4.8",
+      "dimension_basal": "4.8",
+      "dimension_countertop": "4.2",
+      "drawer_count": "0",
+      "door_count": "15",
+      "estimated_price": "1500000",
+      "equipment": "puerta de vidrio",
+      "zones": [
+        "Chillan"
+      ],
+      "type": "Cocina"
     },
-    {
-      "id": 4,
-      "project_id": 125,
-      "selected_image": "https://someurl.com/images/125",
-      "type": "kitchen",
-      "technical_tags": {
-        "countertop_design": "negro",
-        "countertop_type": "cuarzo",
-        "dimensions": {
-          "aerial": 4,
-          "basal": 4,
-          "countertop": 4
-        },
-        "drawer_count": 4,
-        "door_count": 10,
-        "estimated_price": 4000000
-      },
-      "tags": [
-        "Tamaño: mediana",
-        "Tonalidad: clara",
-        "Cubierta: negra", 
-        "Cubierta: cuarzo",
-        "Lineas: saturada",
-        "Accesorios: tiradores simples",
-        "Configuracion: L",
-        "Configuracion: Isla",
-        "Volumetría: basal y aéreo",
-        "Tonalidad: desaturado",
-        "Contraste: bajo contraste",
-        "Melamina: maderas claras",
-        "Tonalidad: cenizas",
-        "Espacialidad: recargada",
-        "Especialidad: compacta",
-        "Valor casa: 3",
-        "Materialidad: melamina"
-      ]
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508452867/jbemn9hwtcm5hh827d12.jpg"
+  },
+  {
+    "id": 15,
+    "project_id": 5981,
+    "photo_id": 933,
+    "tags": null,
+    "created_at": "2018-08-28 04:23:24.121494",
+    "updated_at": "2018-09-03 02:43:27.916148",
+    "technical_tags": {
+      "countertop_type": "Postformado",
+      "countertop_design": "Melamina Rojo Colonial",
+      "dimension_aerial": "3.5",
+      "dimension_basal": "3.5",
+      "dimension_countertop": "4",
+      "drawer_count": "9",
+      "door_count": "13",
+      "estimated_price": "1600000",
+      "equipment": "",
+      "zones": [],
+      "type": "Cocina"
     },
-    {
-      "id": 4,
-      "project_id": 125,
-      "selected_image": "https://someurl.com/images/125",
-      "type": "kitchen",
-      "technical_tags": {
-        "countertop_design": "negro",
-        "countertop_type": "cuarzo",
-        "dimensions": {
-          "aerial": 3,
-          "basal": 3,
-          "countertop": 3
-        },
-        "drawer_count": 12,
-        "door_count": 4,
-        "estimated_price": 4000000
-      },
-      "tags": [
-        "Tonalidad: bicolor horizontal",
-        "Tamaño: pequeña ",
-        "Tonalidad: madera clara",
-        "Tonalidad: calidos",
-        "Luminosidad:claro",
-        "Contraste: bajo contraste",
-        "Lineas: simples",
-        "Espacialidad: alta",
-        "Espacialidad: apretada",
-        "Estilo: fresco",
-        "Estilo: jovial",
-        "Estilo: pulcro ",
-        "Accesorios: sin tiradores",
-        "Accesorios: puertas vidriada",
-        "Modulos: predominantemente cajones",
-        "Accesorios: sistemas",
-        "Configuracion: lineal doble",
-        "Textura: cubierta color liso",
-        "Textura: madera",
-        "Materialidad: contrastado",
-        "Cubierta: cuarzo",
-        "Color: blanco",
-        "Espesor de cubierta: grueso"
-      ]
-    }
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508452935/rcubeku4fzdxwf3clrni.jpg"
+  },
+  {
+    "id": 21,
+    "project_id": 6056,
+    "photo_id": 1490,
+    "tags": null,
+    "created_at": "2018-08-28 04:28:23.158978",
+    "updated_at": "2018-09-03 15:15:35.916297",
+    "technical_tags": {
+      "countertop_type": "Granito",
+      "countertop_design": "Melamina Concreto Metropolitan",
+      "dimension_aerial": "3.6",
+      "dimension_basal": "3",
+      "dimension_countertop": "3",
+      "drawer_count": "4",
+      "door_count": "11",
+      "estimated_price": "1500000",
+      "equipment": "",
+      "zones": [
+        "Santiago Oriente"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453127/perxrhw6rul5gdroicvz.jpg"
+  },
+  {
+    "id": 16,
+    "project_id": 5984,
+    "photo_id": 952,
+    "tags": null,
+    "created_at": "2018-08-28 04:24:56.706933",
+    "updated_at": "2018-09-03 05:06:54.824326",
+    "technical_tags": {
+      "countertop_type": "Cuarzo",
+      "countertop_design": "Melamina Acacia Arena",
+      "dimension_aerial": "3",
+      "dimension_basal": "5.6",
+      "dimension_countertop": "5.6",
+      "drawer_count": "6",
+      "door_count": "17",
+      "estimated_price": "4800000",
+      "equipment": "puerta de aluminio, puerta de vidrio",
+      "zones": [
+        "Santiago Poniente",
+        "Santiago Oriente",
+        "Santiago Sur",
+        "Santiago Norte"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453018/vm9rmyoqselv6h47mwpu.jpg"
+  },
+  {
+    "id": 19,
+    "project_id": 5996,
+    "photo_id": 1004,
+    "tags": null,
+    "created_at": "2018-08-28 04:26:00.868872",
+    "updated_at": "2018-09-03 05:42:10.196649",
+    "technical_tags": {
+      "countertop_type": "Granito",
+      "countertop_design": "Melamina Sahara",
+      "dimension_aerial": "3.9",
+      "dimension_basal": "6.5",
+      "dimension_countertop": "6.5",
+      "drawer_count": "4",
+      "door_count": "20",
+      "estimated_price": "3000000",
+      "equipment": "puertas vidrio",
+      "zones": [
+        "Valparaiso"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508452957/pbfc1d7ddaprpq1iksiz.jpg"
+  },
+  {
+    "id": 22,
+    "project_id": 6057,
+    "photo_id": 11797,
+    "tags": null,
+    "created_at": "2018-08-28 04:28:27.392886",
+    "updated_at": "2018-09-03 15:18:51.435726",
+    "technical_tags": {
+      "countertop_type": "Cuarzo",
+      "countertop_design": "Melamina Roble Antracita",
+      "dimension_aerial": "7.2",
+      "dimension_basal": "11.2",
+      "dimension_countertop": "7",
+      "drawer_count": "9",
+      "door_count": "10",
+      "estimated_price": "8800000",
+      "equipment": "",
+      "zones": [
+        "Santiago Oriente"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1515174171/ya5yl3h6wzyu6zhyebes.jpg"
+  },
+  {
+    "id": 25,
+    "project_id": 6061,
+    "photo_id": 1502,
+    "tags": null,
+    "created_at": "2018-08-28 04:28:37.437987",
+    "updated_at": "2018-09-03 15:38:10.181434",
+    "technical_tags": {
+      "countertop_type": "Postformado",
+      "countertop_design": "Melamina Cedro ",
+      "dimension_aerial": "2.4",
+      "dimension_basal": "8.4",
+      "dimension_countertop": "9",
+      "drawer_count": "7",
+      "door_count": "10",
+      "estimated_price": "4200000",
+      "equipment": "puertas vidrio, puerta aluminio",
+      "zones": [
+        "Santiago Oriente"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453133/nxkv6nve73qhyzsbrhqm.jpg"
+  },
+  {
+    "id": 17,
+    "project_id": 5985,
+    "photo_id": 958,
+    "tags": null,
+    "created_at": "2018-08-28 04:25:25.614656",
+    "updated_at": "2018-09-03 05:12:05.975431",
+    "technical_tags": {
+      "countertop_type": "Granito",
+      "countertop_design": "Melamina Roble Santana",
+      "dimension_aerial": "3",
+      "dimension_basal": "4",
+      "dimension_countertop": "4",
+      "drawer_count": "9",
+      "door_count": "7",
+      "estimated_price": "2800000",
+      "equipment": "",
+      "zones": [
+        "Santiago Poniente",
+        "Santiago Oriente",
+        "Santiago Sur",
+        "Santiago Norte"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453093/f8hdokowqtkxccp23ruy.jpg"
+  },
+  {
+    "id": 24,
+    "project_id": 6060,
+    "photo_id": 1500,
+    "tags": null,
+    "created_at": "2018-08-28 04:28:33.624778",
+    "updated_at": "2018-09-03 15:30:48.772442",
+    "technical_tags": {
+      "countertop_type": "Cuarzo",
+      "countertop_design": "Melamina Visón",
+      "dimension_aerial": "3",
+      "dimension_basal": "4.2",
+      "dimension_countertop": "5",
+      "drawer_count": "2",
+      "door_count": "7",
+      "estimated_price": "2800000",
+      "equipment": "puertas vidrio, puerta aluminio",
+      "zones": [
+        "Santiago Oriente"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453135/ieepccakck0irysdh9j4.jpg"
+  },
+  {
+    "id": 3,
+    "project_id": 4126,
+    "photo_id": 11541,
+    "tags": [
+      "Tonalidad:Monocromático",
+      "Tonalidad:Unicolor",
+      "Tonalidad:Claros",
+      "Luminosidad:Iluminada",
+      "Luminosidad:Claro",
+      "Líneas:Medio",
+      "Contraste:Bajo",
+      "Espacialidad:Compacta",
+      "Espacialidad:Apretada",
+      "Estilo:Sin estilo",
+      "Materialidad:Melamina",
+      "Percepción de tamaño:S",
+      "Configuración:En L",
+      "Textura:Tablero liso",
+      "Textura:Cubierta texturas",
+      "Cubierta:Granito",
+      "Color cubierta:Colores",
+      "Espesor cubierta:Gruesa",
+      "Visualización:Pesada",
+      "Volumetrías:Basal y aéreo",
+      "Módulos:Sin puerta elevable",
+      "Módulos:Harta puerta",
+      "Módulos:Poco cajón",
+      "Accesorios:Tiradores simples",
+      "Accesorios:Simple (bisagras)"
+    ],
+    "created_at": "2018-08-27 15:57:22.720298",
+    "updated_at": "2018-09-01 20:19:52.20508",
+    "technical_tags": {
+      "type": "Cocina",
+      "zones": [
+        "Santiago Poniente",
+        "Santiago Oriente",
+        "Santiago Sur",
+        "Santiago Norte"
+      ],
+      "equipment": "",
+      "door_count": "6",
+      "drawer_count": "3",
+      "countertop_type": "Postformado",
+      "dimension_basal": "4",
+      "estimated_price": "1600000",
+      "dimension_aerial": "2",
+      "countertop_design": "Melamina Blanco",
+      "dimension_countertop": "3.5"
+    },
+    "numerical_tags": {
+      "Ejecución": 3,
+      "Diseño y creatividad": 1,
+      "Exigencias técnicas": 1,
+      "Valor casa": 2500,
+      "Precio estimado": 3000000,
+      "Proporción cajones a puertas": 30
+    },
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1515174007/mds4c2m3zsagdbglhmp8.jpg"
+  },
+  {
+    "id": 4,
+    "project_id": 4127,
+    "photo_id": 945,
+    "tags": [
+      "Tonalidad:Bicolor franjas horizontales",
+      "Tonalidad:Unicolor",
+      "Tonalidad:Multicolor",
+      "Tonalidad:Clásicos",
+      "Tonalidad:Oscuros",
+      "Tonalidad:Claros",
+      "Tonalidad:Maderas",
+      "Luminosidad:Iluminada",
+      "Luminosidad:Oscuro",
+      "Contraste:Alto",
+      "Espacialidad:Alta",
+      "Estilo:Clásico",
+      "Estilo:Familiar",
+      "Estilo:Tosca",
+      "Materialidad:Melamina",
+      "Percepción de tamaño:M",
+      "Configuración:En L",
+      "Textura:Tablero textura",
+      "Textura:Cubierta texturas",
+      "Cubierta:Granito",
+      "Color cubierta:Colores",
+      "Espesor cubierta:Gruesa",
+      "Visualización:Pesada",
+      "Volumetrías:Basal y aéreo",
+      "Módulos:Sin puerta elevable",
+      "Módulos:Poco cajón",
+      "Accesorios:Sin tiradores",
+      "Accesorios:Simple (bisagras)"
+    ],
+    "created_at": "2018-08-27 16:01:19.567056",
+    "updated_at": "2018-09-01 20:19:52.217275",
+    "technical_tags": {
+      "type": "Cocina",
+      "zones": [
+        "Santiago Poniente",
+        "Santiago Oriente",
+        "Santiago Sur",
+        "Santiago Norte"
+      ],
+      "equipment": "sistema de elevación, perfil tirador",
+      "door_count": "4",
+      "drawer_count": "2",
+      "countertop_type": "Granito",
+      "dimension_basal": "3",
+      "estimated_price": "1200000",
+      "dimension_aerial": "1",
+      "countertop_design": "Melamina Coigüe Chocolate",
+      "dimension_countertop": "3"
+    },
+    "numerical_tags": {
+      "Ejecución": 4,
+      "Diseño y creatividad": 3,
+      "Exigencias técnicas": 3,
+      "Valor casa": 3000,
+      "Precio estimado": 1500000,
+      "Proporción cajones a puertas": 20
+    },
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508452938/envmqesptlhkdjo10nnp.jpg"
+  },
+  {
+    "id": 6,
+    "project_id": 5350,
+    "photo_id": 14694,
+    "tags": [
+      "Tonalidad:Monocromático",
+      "Tonalidad:Oscuros",
+      "Tonalidad:Maderas",
+      "Luminosidad:Oscuro",
+      "Líneas:Simple",
+      "Contraste:Alto",
+      "Espacialidad:Baja",
+      "Espacialidad:Aireada (despejada)",
+      "Estilo:Elegante",
+      "Estilo:Minimalista",
+      "Estilo:Limpia",
+      "Estilo:Industrial",
+      "Estilo:High performance",
+      "Materialidad:Melamina",
+      "Percepción de tamaño:XL",
+      "Configuración:Lineal doble",
+      "Textura:Tablero textura",
+      "Textura:Cubierta texturas",
+      "Cubierta:Cuarzo",
+      "Color cubierta:Blanco",
+      "Espesor cubierta:Gruesa",
+      "Visualización:Pesada",
+      "Volumetrías:Solo basal",
+      "Módulos:Sin puerta elevable",
+      "Módulos:Harta puerta",
+      "Accesorios:Sin tiradores"
+    ],
+    "created_at": "2018-08-27 16:15:10.159661",
+    "updated_at": "2018-09-01 20:19:52.226953",
+    "technical_tags": {
+      "type": "Cocina",
+      "zones": [
+        "Valparaiso"
+      ],
+      "equipment": "",
+      "door_count": "7",
+      "drawer_count": "0",
+      "countertop_type": "Cuarzo",
+      "dimension_basal": "6",
+      "estimated_price": "6000000",
+      "dimension_aerial": "0",
+      "countertop_design": "Melamina Roble Antracita",
+      "dimension_countertop": "5"
+    },
+    "numerical_tags": {
+      "Ejecución": 5,
+      "Diseño y creatividad": 4,
+      "Exigencias técnicas": 3,
+      "Valor casa": 12000,
+      "Precio estimado": 4000000,
+      "Proporción cajones a puertas": 10
+    },
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1515175883/tq0wkug0gheifyyrmuin.jpg"
+  },
+  {
+    "id": 5,
+    "project_id": 5077,
+    "photo_id": 2561,
+    "tags": [
+      "Tonalidad:Bicolor franjas verticales",
+      "Tonalidad:Multicolor",
+      "Tonalidad:Colores",
+      "Tonalidad:Maderas",
+      "Luminosidad:Iluminada",
+      "Luminosidad:Oscuro",
+      "Líneas:Compleja",
+      "Contraste:Alto",
+      "Espacialidad:Recargada",
+      "Espacialidad:Compacta",
+      "Espacialidad:Apretada",
+      "Estilo:Ecléctico",
+      "Materialidad:Melamina",
+      "Percepción de tamaño:S",
+      "Configuración:Lineal doble",
+      "Textura:Tablero textura",
+      "Textura:Cubierta texturas",
+      "Cubierta:Granito",
+      "Color cubierta:Colores",
+      "Espesor cubierta:Gruesa",
+      "Visualización:Pesada",
+      "Volumetrías:Basal y aéreo",
+      "Módulos:Sin puerta elevable",
+      "Módulos:Harta puerta",
+      "Módulos:Poco cajón",
+      "Accesorios:Tiradores simples",
+      "Accesorios:Simple (bisagras)"
+    ],
+    "created_at": "2018-08-27 16:13:51.673743",
+    "updated_at": "2018-09-01 20:19:52.236198",
+    "technical_tags": {
+      "type": "Cocina",
+      "zones": [
+        "Curico",
+        "Talca",
+        "Concepcion",
+        "Los Angeles"
+      ],
+      "equipment": "",
+      "door_count": "10",
+      "drawer_count": "6",
+      "countertop_type": "Granito",
+      "dimension_basal": "6",
+      "estimated_price": "2400000",
+      "dimension_aerial": "2",
+      "countertop_design": "Melamina Roble Oscuro",
+      "dimension_countertop": "5"
+    },
+    "numerical_tags": {
+      "Ejecución": 3,
+      "Diseño y creatividad": 3,
+      "Exigencias técnicas": 1,
+      "Valor casa": 3000,
+      "Precio estimado": 2500000,
+      "Proporción cajones a puertas": 30
+    },
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453504/p8ubfziqaldicvqj4p4p.jpg"
+  },
+  {
+    "id": 8,
+    "project_id": 5836,
+    "photo_id": 11813,
+    "tags": [
+      "Tonalidad:Bicolor franjas horizontales",
+      "Tonalidad:Claros",
+      "Tonalidad:Cálidos",
+      "Tonalidad:Colores",
+      "Tonalidad:Maderas",
+      "Luminosidad:Iluminada",
+      "Luminosidad:Claro",
+      "Líneas:Simple",
+      "Líneas:Medio",
+      "Contraste:Alto",
+      "Espacialidad:Alta",
+      "Espacialidad:Aireada (despejada)",
+      "Espacialidad:Funcional",
+      "Estilo:Vanguardista",
+      "Estilo:Limpia",
+      "Estilo:Familiar",
+      "Estilo:Jovial",
+      "Materialidad:Melamina",
+      "Percepción de tamaño:L",
+      "Configuración:En U",
+      "Textura:Tablero textura",
+      "Textura:Cubierta color liso",
+      "Cubierta:Cuarzo",
+      "Color cubierta:Blanco",
+      "Espesor cubierta:Gruesa",
+      "Visualización:Liviano",
+      "Volumetrías:Basal y aéreo",
+      "Módulos:Sin puerta elevable",
+      "Módulos:Harta puerta",
+      "Accesorios:Tiradores simples",
+      "Accesorios:Simple (bisagras)"
+    ],
+    "created_at": "2018-08-27 16:18:28.622414",
+    "updated_at": "2018-09-01 20:19:52.264057",
+    "technical_tags": {
+      "type": "Cocina",
+      "zones": [
+        "Santiago Oriente"
+      ],
+      "equipment": "",
+      "door_count": "13",
+      "drawer_count": "12",
+      "countertop_type": "Cuarzo",
+      "dimension_basal": "8",
+      "estimated_price": "5600000",
+      "dimension_aerial": "6",
+      "countertop_design": "Melamina Maple Grava",
+      "dimension_countertop": "8"
+    },
+    "numerical_tags": {
+      "Ejecución": 5,
+      "Diseño y creatividad": 4,
+      "Exigencias técnicas": 3,
+      "Valor casa": 3000,
+      "Precio estimado": 4500000,
+      "Proporción cajones a puertas": 30
+    },
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1515174181/mnduuyewh6rqybacvisy.jpg"
+  },
+  {
+    "id": 10,
+    "project_id": 5838,
+    "photo_id": 11807,
+    "tags": [
+      "Tonalidad:Unicolor",
+      "Tonalidad:Claros",
+      "Tonalidad:Cálidos",
+      "Tonalidad:Cenizas",
+      "Tonalidad:Maderas",
+      "Luminosidad:Iluminada",
+      "Luminosidad:Claro",
+      "Líneas:Simple",
+      "Contraste:Bajo",
+      "Espacialidad:Aireada (despejada)",
+      "Estilo:Vanguardista",
+      "Estilo:New rich",
+      "Estilo:Minimalista",
+      "Estilo:Metálicos",
+      "Estilo:Pulcro",
+      "Materialidad:Melamina",
+      "Percepción de tamaño:XL",
+      "Percepción de tamaño:M",
+      "Configuración:En L",
+      "Textura:Tablero textura",
+      "Textura:Cubierta color liso",
+      "Cubierta:Cuarzo",
+      "Color cubierta:Grises",
+      "Espesor cubierta:Gruesa",
+      "Visualización:Pesada",
+      "Volumetrías:Basal y aéreo",
+      "Módulos:Harta puerta",
+      "Módulos:Poco cajón",
+      "Accesorios:Sin tiradores",
+      "Accesorios:Simple (bisagras)"
+    ],
+    "created_at": "2018-08-27 16:18:43.499832",
+    "updated_at": "2018-09-01 20:19:52.274711",
+    "technical_tags": {
+      "type": "Cocina",
+      "zones": [
+        "Santiago Oriente"
+      ],
+      "equipment": "",
+      "door_count": "21",
+      "drawer_count": "6",
+      "countertop_type": "Cuarzo",
+      "dimension_basal": "7",
+      "estimated_price": "7000000",
+      "dimension_aerial": "5",
+      "countertop_design": "Melamina Olmo Alpino",
+      "dimension_countertop": "4"
+    },
+    "numerical_tags": {
+      "Ejecución": 3,
+      "Diseño y creatividad": 4,
+      "Exigencias técnicas": 4,
+      "Valor casa": 12000,
+      "Precio estimado": 10000000,
+      "Proporción cajones a puertas": 20
+    },
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1515174189/ntjmromwkpc5j6chqdgc.jpg"
+  },
+  {
+    "id": 7,
+    "project_id": 5832,
+    "photo_id": 11185,
+    "tags": [
+      "Tonalidad:Monocromático",
+      "Tonalidad:Colores",
+      "Luminosidad:Iluminada",
+      "Luminosidad:Claro",
+      "Líneas:Simple",
+      "Contraste:Bajo",
+      "Espacialidad:Compacta",
+      "Estilo:Sin estilo",
+      "Estilo:Juvenil",
+      "Materialidad:Melamina",
+      "Percepción de tamaño:S",
+      "Configuración:Cocina lineal",
+      "Textura:Tablero liso",
+      "Textura:Cubierta texturas",
+      "Cubierta:Granito",
+      "Color cubierta:Grises",
+      "Espesor cubierta:Gruesa",
+      "Visualización:Pesada",
+      "Volumetrías:Basal y aéreo",
+      "Módulos:Sin puerta elevable",
+      "Módulos:Harta puerta",
+      "Módulos:Poco cajón",
+      "Accesorios:Tiradores simples",
+      "Accesorios:Simple (bisagras)"
+    ],
+    "created_at": "2018-08-27 16:17:38.413831",
+    "updated_at": "2018-09-01 20:19:52.246013",
+    "technical_tags": {
+      "type": "Cocina",
+      "zones": [
+        "Villa Alemana",
+        "Reñaca",
+        "Quilpue",
+        "Viña del Mar"
+      ],
+      "equipment": "",
+      "door_count": "7",
+      "drawer_count": "3",
+      "countertop_type": "Granito",
+      "dimension_basal": "2",
+      "estimated_price": "800000",
+      "dimension_aerial": "1.6",
+      "countertop_design": "Melamina Rojo Colonial",
+      "dimension_countertop": "2"
+    },
+    "numerical_tags": {
+      "Ejecución": 3,
+      "Diseño y creatividad": 2,
+      "Exigencias técnicas": 1,
+      "Valor casa": 2500,
+      "Precio estimado": 1500000,
+      "Proporción cajones a puertas": 10
+    },
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1515173720/vsgjz5y70rj7nfasmoqd.jpg"
+  },
+  {
+    "id": 14,
+    "project_id": 5902,
+    "photo_id": 691,
+    "tags": null,
+    "created_at": "2018-08-28 04:17:05.82157",
+    "updated_at": "2018-09-03 02:02:27.351117",
+    "technical_tags": {
+      "countertop_type": "Cuarzo",
+      "countertop_design": "Melamina Visón",
+      "dimension_aerial": "4.8",
+      "dimension_basal": "5",
+      "dimension_countertop": "4.5",
+      "drawer_count": "4",
+      "door_count": "14",
+      "estimated_price": "5000000",
+      "equipment": "puerta de vidrio",
+      "zones": [
+        "Santiago Poniente",
+        "Santiago Oriente",
+        "Santiago Sur",
+        "Santiago Norte"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508452906/bqfdeloqfhcg2jf5tbgf.jpg"
+  },
+  {
+    "id": 9,
+    "project_id": 5837,
+    "photo_id": 1506,
+    "tags": [
+      "Tonalidad:Bicolor franjas horizontales",
+      "Tonalidad:Multicolor",
+      "Tonalidad:Clásicos",
+      "Tonalidad:Maderas",
+      "Luminosidad:Oscuro",
+      "Líneas:Medio",
+      "Contraste:Alto",
+      "Espacialidad:Alta",
+      "Espacialidad:Aireada (despejada)",
+      "Estilo:Sin estilo",
+      "Materialidad:Melamina",
+      "Percepción de tamaño:M",
+      "Configuración:En L",
+      "Textura:Tablero textura",
+      "Textura:Cubierta color liso",
+      "Cubierta:Resina",
+      "Color cubierta:Blanco",
+      "Espesor cubierta:Gruesa",
+      "Volumetrías:Basal y aéreo",
+      "Módulos:Harta puerta",
+      "Módulos:Poco cajón",
+      "Accesorios:Tiradores simples",
+      "Accesorios:Simple (bisagras)"
+    ],
+    "created_at": "2018-08-27 16:18:36.934309",
+    "updated_at": "2018-09-01 20:19:52.255009",
+    "technical_tags": {
+      "type": "Cocina",
+      "zones": [
+        "Santiago Oriente"
+      ],
+      "equipment": "luz led",
+      "door_count": "12",
+      "drawer_count": "6",
+      "countertop_type": "Granito",
+      "dimension_basal": "4",
+      "estimated_price": "2000000",
+      "dimension_aerial": "2",
+      "countertop_design": "Melamina Coigüe Chocolate",
+      "dimension_countertop": "4"
+    },
+    "numerical_tags": {
+      "Ejecución": 3,
+      "Diseño y creatividad": 3,
+      "Exigencias técnicas": 2,
+      "Valor casa": 2500,
+      "Precio estimado": 3000000,
+      "Proporción cajones a puertas": 30
+    },
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453136/fuuwuqgxgwuaac7lmhlv.jpg"
+  },
+  {
+    "id": 18,
+    "project_id": 5986,
+    "photo_id": 969,
+    "tags": null,
+    "created_at": "2018-08-28 04:25:38.145752",
+    "updated_at": "2018-09-03 05:13:50.245024",
+    "technical_tags": {
+      "countertop_type": "Cuarzo",
+      "countertop_design": "Melamina Visón",
+      "dimension_aerial": "2",
+      "dimension_basal": "3",
+      "dimension_countertop": "2.5",
+      "drawer_count": "3",
+      "door_count": "8",
+      "estimated_price": "2100000",
+      "equipment": "",
+      "zones": [
+        "Santiago Poniente",
+        "Santiago Oriente",
+        "Santiago Sur",
+        "Santiago Norte"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508452985/oofhkkvwznldaihxgnc6.jpg"
+  },
+  {
+    "id": 20,
+    "project_id": 6014,
+    "photo_id": 1177,
+    "tags": null,
+    "created_at": "2018-08-28 04:26:38.949541",
+    "updated_at": "2018-09-03 05:43:19.149249",
+    "technical_tags": {
+      "countertop_type": "Granito",
+      "countertop_design": "Alto Brillo Rojo",
+      "dimension_aerial": "4",
+      "dimension_basal": "3",
+      "dimension_countertop": "3",
+      "drawer_count": "3",
+      "door_count": "15",
+      "estimated_price": "2000000",
+      "equipment": "",
+      "zones": [
+        "Valparaiso"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453017/jn0xl2fdye9umc9ugt1f.jpg"
+  },
+  {
+    "id": 23,
+    "project_id": 6058,
+    "photo_id": 1497,
+    "tags": null,
+    "created_at": "2018-08-28 04:28:30.249579",
+    "updated_at": "2018-09-03 15:22:08.132885",
+    "technical_tags": {
+      "countertop_type": "Cuarzo",
+      "countertop_design": "Melamina Gernika",
+      "dimension_aerial": "1.5",
+      "dimension_basal": "5",
+      "dimension_countertop": "9",
+      "drawer_count": "7",
+      "door_count": "4",
+      "estimated_price": "2500000",
+      "equipment": "",
+      "zones": [
+        "Santiago Oriente"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453128/ejfmsmkxtaoqgqnhwpof.jpg"
+  },
+  {
+    "id": 26,
+    "project_id": 6063,
+    "photo_id": 1514,
+    "tags": null,
+    "created_at": "2018-08-28 04:28:46.93241",
+    "updated_at": "2018-09-03 19:31:15.124674",
+    "technical_tags": {
+      "countertop_type": "Cuarzo",
+      "countertop_design": "Melamina Blanco",
+      "dimension_aerial": "1",
+      "dimension_basal": "4.5",
+      "dimension_countertop": "4",
+      "drawer_count": "5",
+      "door_count": "9",
+      "estimated_price": "2000000",
+      "equipment": "puertas de vidrio",
+      "zones": [
+        "Puerto Montt",
+        "Valdivia"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1508453140/t3urhcobihacepjspmfm.jpg"
+  },
+  {
+    "id": 522,
+    "project_id": 15168,
+    "photo_id": 24295,
+    "tags": null,
+    "created_at": "2018-08-31 18:10:04.835475",
+    "updated_at": "2018-09-03 01:27:54.128197",
+    "technical_tags": {
+      "countertop_type": "Mármol",
+      "countertop_design": "Melamina Coigüe Chocolate",
+      "dimension_aerial": "2",
+      "dimension_basal": "2",
+      "dimension_countertop": "2",
+      "drawer_count": "4",
+      "door_count": "10",
+      "estimated_price": "1000000",
+      "equipment": "",
+      "zones": [
+        "Concepción",
+        "Talca"
+      ],
+      "type": "Cocina"
+    },
+    "numerical_tags": null,
+    "photo_url": "https://res.cloudinary.com/hylemqjoq/image/upload/v1534979051/azjtlkhgtavrm1mrxv9y.jpg"
+  }
 ]
