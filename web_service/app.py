@@ -8,17 +8,53 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/ruta", methods = ["GET", "POST"])
-def ruta():
-    if request.method == "GET":
-        result = 'GET request is not allowed'
-        status = 501
+@app.route("/api/v1/recommendations", methods = ["POST"])
+def recommendations():
+    params = request.get_json()
+    print(params)
 
-    elif request.method == "POST":
-        status = 200
+    # Dummmy response
+    dummy = json.loads("""{
+                "data": {
+                    "type": "recommendations",
+                    "id": "1",
+                    "attributes": {
+                    "project_metas": [
+                        {
+                        "id": 1929,
+                        "score": 67.1
+                        },
+                        {
+                        "id": 8988,
+                        "score": 57.7
+                        }
+                    ],
+                    "reflection": {
+                        "heavier_tags": ["Color:Blanco","Volumetría:Basal"]
+                        }
+                    }   
+                }
+            }
+    """)
 
-    resp = Response(json.dumps(result), status=status, mimetype='application/json')
+
+    resp = Response(json.dumps(dummy), status=200, mimetype='application/json')
     return resp
+
+
+@app.route("/api/v1/projectmetas", methods = ["POST"])
+def project_loading():
+    params = request.get_json()
+    print(params)
+
+    # Dummmy response
+
+    resp = Response(json.dumps(params), status=200, mimetype='application/json')
+    return resp
+
+
+
+
 
 if __name__ ==  '__main__':
     app.run()
