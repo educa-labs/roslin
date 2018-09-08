@@ -1,6 +1,7 @@
 import json
 from functools import reduce
 from nltk import word_tokenize
+from unidecode import unidecode
 
 '''
 transformer object that turns the data json into arrays of tokenized words.
@@ -57,3 +58,51 @@ class JsonToTagsTransform(JsonTransform):
     
     def process_tag_array(self,tags):
         return [tag.lower() for tag in tags]
+
+
+class JSONTransformer:
+    @staticmethod
+    def clear(string):
+        string = unidecode(string.lower().strip().replace(' ', '_'))
+
+        return float(string) if string.replace('.', '', 1).isdigit() else string
+
+    @staticmethod
+    def preprocess_json(json):
+        new_json = []
+
+        for instance in filter(lambda i: i['tags'] is not None, json):
+            new_instance = {}
+            
+            for (key, value) in map(lambda t: t.split(':'), instance['tags']):
+                key = JSONTransformer.clear(key)
+
+                if key not in new_instance:
+                    new_instance[key] = JSONTransformer.clear(value)
+
+            new_json.append(new_instance)
+
+        return new_json
+
+    @staticmethod
+    def json_to_df(json):
+        df_dict = {
+            key: [None] * len(json)
+            for instance in json
+            for key in instance
+        }
+
+        for index, instance in enumerate(json):
+            for key, value in instance.items():
+                df_dict[key][index] = value
+
+        return pd.DataFrame.from_dict(df_dict)
+
+    def fit(self, X=None, y=None):
+        return self
+    
+    def transform(self, X=None):
+        preprocessed_json = JSONTransformer.preprocess_json(X)
+        
+        return JSONTransformer.json_to_df(preprocessed_json)
+      
