@@ -1,3 +1,6 @@
 glove-sbwc.i25.vec
-.ipynb_checkpoints/
+jupyter/.ipynb_checkpoints/
 .vscode
+*.pyc
+pyenv
+/env
