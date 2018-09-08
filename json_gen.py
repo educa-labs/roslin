@@ -38,5 +38,6 @@ if __name__ == '__main__':
     for instance in data_array:
         fix_json(instance)
         fix_numerical(instance)
+    print("Parsed {} projects".format(len(data_array)))
     with open(OUTPUT,"w") as out:
         json.dump(data_array,out,indent=2,ensure_ascii=False)

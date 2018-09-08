@@ -105,3 +105,4 @@ class JSONTransformer:
         preprocessed_json = JSONTransformer.preprocess_json(X)
         
         return JSONTransformer.json_to_df(preprocessed_json)
+      
