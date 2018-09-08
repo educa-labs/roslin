@@ -3,3 +3,4 @@ glove-sbwc.i25.vec
 .vscode
 *.pyc
 pyenv
+/env
