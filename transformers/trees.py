@@ -1,10 +1,23 @@
+from pymongo import MongoClient
 from sklearn.neighbors import BallTree, DistanceMetric
+import pickle
+
+
+class MongoSerializable:
+    def save(self, db_name, key):
+        with MongoClient() as client:
+            db = client[db_name]
+
+            _object      = {}
+            _object[key] = pickle.dumps(self)
+
+            db.models.insert(_object)
 
 '''
 wrapper for sklearn BallTree that can be added to a pipeline
 '''
 
-class BallTreePredictor():
+class BallTreePredictor(MongoSerializable):
     
     def __init__(self,k=5):
         self.tree = None
@@ -90,7 +103,7 @@ class GowerDistance:
         return distance / self.W_i_sum
 
 
-class KNNPredictor:
+class KNNPredictor(MongoSerializable):
     def __init__(self, k=5):
         self.k = k
         

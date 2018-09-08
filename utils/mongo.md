@@ -2,9 +2,7 @@
 
 ```python
 model = KNNPredictor()  # Example of model to be saved...
-
-db = open_db(db_name='test-database')
-save_model(model=model, db=db, key='knn')
+model.save('test-database', 'knn')
 ```
 # MongoDB on Terminal
 
