@@ -10,6 +10,8 @@ from sklearn.pipeline import Pipeline
 from transformers.trees import BallTreePredictor
 from transformers.json_transformers import JsonToTagsTransform
 from transformers.embedders import LdaTransformer
+from utils.json_utils import get_by_id, NumpyEncoder
+
 
 #Constants
 DATA_PATH= "data.json"
@@ -32,35 +34,29 @@ def recommendations():
         query = [int(x) for x in params[1:-1].split(",")]
     except TypeError:
         return Response(json.dumps({"error": "bad params"}, status=400))
-
     print(query)
 
+    docs = get_by_id(data,query)
+    result = pipe.predict(docs)
+
     # Dummmy response
-    dummy = json.loads("""{
+    response_template = json.loads("""
+            {
                 "data": {
                     "type": "recommendations",
                     "id": "1",
                     "attributes": {
-                    "project_metas": [
-                        {
-                        "id": 1929,
-                        "score": 67.1
-                        },
-                        {
-                        "id": 8988,
-                        "score": 57.7
-                        }
-                    ],
-                    "reflection": {
-                        "heavier_tags": ["Color:Blanco","Volumetría:Basal"]
-                        }
+                        "project_metas": [],
+                        "reflection": {}
                     }   
                 }
             }
     """)
 
 
-    resp = Response(json.dumps(dummy), status=200, mimetype='application/json')
+    response_template['data']['attributes']['project_metas'] = result
+    print(response_template)
+    resp = Response(json.dumps(response_template, cls=NumpyEncoder), status=200, mimetype='application/json')
     return resp
 
 
@@ -73,10 +69,6 @@ def project_loading():
 
     resp = Response(json.dumps(params), status=200, mimetype='application/json')
     return resp
-
-
-
-
 
 if __name__ ==  '__main__':
     app.run()
