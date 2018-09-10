@@ -4,3 +4,4 @@ jupyter/.ipynb_checkpoints/
 *.pyc
 pyenv
 /env
+.ipynb_checkpoints/
