@@ -1,7 +1,7 @@
-from pymongo import MongoClient
 from sklearn.neighbors import BallTree, DistanceMetric
 import pickle
 import numpy as np
+
 
 class MongoSerializable:
     def save(self, db_name, key):

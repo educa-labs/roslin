@@ -1,4 +1,3 @@
-import json as js
 import pickle
 
 
@@ -55,10 +54,9 @@ def load_models(db_name, collection_name, models):
             if model is None:
                 print('Training model <{0}>'.format(key.upper()))
 
-                builder, json_path = models[key]
+                builder, raw_json = models[key]
                 model = builder()
 
-                raw_json = js.load(open(json_path, encoding='utf-8'))
                 model.fit(raw_json)
 
                 save(
