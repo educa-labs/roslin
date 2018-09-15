@@ -1,3 +1,5 @@
+import numpy as np
+
 class Output:
 
     def fit(self,X=None,y=None):
@@ -6,12 +8,16 @@ class Output:
     def predict(self,X=None):
         return X
 
+    @staticmethod
+    def calculate_score(distance):
+        return (1/(1+distance))
+
 # Temporal solution, take neighbors of first input
 class DumbOutput(Output):
 
     def predict(self,X=None):
         
-        scores = X[0][0]
+        scores = np.array(list(map(lambda d: DumbOutput.calculate_score(d),X[0][0])))
         indexes = X[1][0]
         return [scores,indexes]
 
@@ -27,7 +33,7 @@ class GreedyOutput(Output):
 
         for j in range(len(X[0][0])):
             for i in range(len(X[0])):
-                scores.append(X[0][i][j])
+                scores.append(GreedyOutput.calculate_score(X[0][i][j]))
                 indexes.append(X[1][i][j])
                 if len(scores) == self.k:
                     return [scores,indexes]
