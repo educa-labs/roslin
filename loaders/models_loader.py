@@ -49,6 +49,8 @@ def load_models(db_name, collection_name, models, clear=False):
         collection = db[collection_name]
 
         if clear:
+            print('Cleaning models collection...')
+
             collection.remove({})
 
         for key in models:

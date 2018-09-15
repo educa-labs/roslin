@@ -1,6 +1,7 @@
 import json as js
 from sklearn.pipeline import Pipeline
 from utils.json_utils import map_to_id, map_from_id
+from collections import OrderedDict
 
 from loaders.models_loader import load_models
 from loaders.data_loader import load_data
@@ -39,10 +40,9 @@ def init(clear=False):
 
     data = js.load(open('data.json', encoding='utf-8'))
 
-    models = {
-        'knn': (KNN_BUILDER, data),
-        'hielo': (HIELO_BUILDER, data)
-    }
+    models = OrderedDict()
+    models['knn'] = (KNN_BUILDER, data)
+    models['hielo'] = (HIELO_BUILDER, data)
 
     models = load_models(
         db_name=db_name,
