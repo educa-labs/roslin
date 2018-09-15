@@ -23,7 +23,7 @@ CORS(app)
 
 @app.route("/api/v1/recommendations", methods=["GET"])
 def recommendations():
-    pipe = models[request.args.get('model')]
+    pipe = models[int(request.args.get('model'))]
     params = request.args.get('project_meta_ids')
     try:
         query = [int(x) for x in params.split(",")]
