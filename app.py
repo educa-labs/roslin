@@ -10,7 +10,7 @@ from sklearn.pipeline import Pipeline
 from transformers.trees import BallTreePredictor
 from transformers.json_transformers import JsonToTagsTransform
 from transformers.embedders import LdaTransformer
-from utils.json_utils import get_by_id, NumpyEncoder
+from utils.json_utils import get_by_id, NumpyEncoder, map_from_id, map_to_id,get_by_id_map
 
 
 #Constants
@@ -22,6 +22,10 @@ pipe_components =[("json",JsonToTagsTransform()),("embedder",LdaTransformer()),(
 pipe = Pipeline(pipe_components)
 with open(DATA_PATH) as file:
     data =  json.load(file)
+
+index_to_id = map_to_id(data)
+id_to_index = map_from_id(data) 
+
 pipe.fit(data)
 
 app = Flask(__name__)
@@ -31,13 +35,20 @@ CORS(app)
 def recommendations():
     params = request.args.get('project_meta_ids')
     try:
-        query = [int(x) for x in params[1:-1].split(",")]
+        query = [int(x) for x in params.split(",")]
     except TypeError:
         return Response(json.dumps({"error": "bad params"}, status=400))
     print(query)
 
-    docs = get_by_id(data,query)
+    docs = get_by_id_map(data,query,id_to_index)
     result = pipe.predict(docs)
+
+    # Temporal solution, take first output only.
+
+    distance = result[0][0]
+    indexes = result[1][0]
+
+    output = [{ "distance":d, "id": index_to_id[index]} for d,index in zip(distance,indexes)]
 
     # Dummmy response
     response_template = json.loads("""
@@ -54,7 +65,7 @@ def recommendations():
     """)
 
 
-    response_template['data']['attributes']['project_metas'] = result
+    response_template['data']['attributes']['project_metas'] = output
     print(response_template)
     resp = Response(json.dumps(response_template, cls=NumpyEncoder), status=200, mimetype='application/json')
     return resp

@@ -137,6 +137,6 @@ class KNNPredictor(MongoSerializable):
         X    = object_cols_to_category(X)
         X, _ = category_cols_to_codes(X, self.cat_cols, cat_cols_codes=self.cat_cols_codes)
 
-        prediction = self.tree.query(X, self.k, return_distance=False)
+        prediction = self.tree.query(X, self.k)
         
-        return list(map(lambda p: self.df.iloc[p], prediction))
+        return prediction
