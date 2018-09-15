@@ -41,12 +41,15 @@ def load_model(collection, key):
         return pickle.loads(cursor[0][key])
 
 
-def load_models(db_name, collection_name, models):
+def load_models(db_name, collection_name, models, clear=False):
     loaded_models = {}
 
     with MongoClient() as client:
         db = client[db_name]
         collection = db[collection_name]
+
+        if clear:
+            collection.remove({})
 
         for key in models:
             model = load_model(collection, key)

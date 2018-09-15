@@ -31,7 +31,7 @@ def HIELO_BUILDER():
     return Pipeline(pipeline_components)
 
 
-def init():
+def init(clear=False):
     db_name = 'test-database'
     collection_name = 'models'
 
@@ -47,7 +47,8 @@ def init():
     models = load_models(
         db_name=db_name,
         collection_name=collection_name,
-        models=models
+        models=models,
+        clear=clear
     )
 
     return list(models.values()), data, map_to_id(data), map_from_id(data)
