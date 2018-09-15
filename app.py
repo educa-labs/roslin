@@ -10,6 +10,7 @@ from sklearn.pipeline import Pipeline
 from transformers.trees import BallTreePredictor
 from transformers.json_transformers import JsonToTagsTransform
 from transformers.embedders import LdaTransformer
+from transformers.outputs import DumbOutput,GreedyOutput,Output
 from utils.json_utils import get_by_id, NumpyEncoder, map_from_id, map_to_id,get_by_id_map
 
 
@@ -18,7 +19,7 @@ DATA_PATH= "data.json"
 
 
 # Data and initial pipe training
-pipe_components =[("json",JsonToTagsTransform()),("embedder",LdaTransformer()),("tree",BallTreePredictor())] 
+pipe_components =[("json",JsonToTagsTransform()),("embedder",LdaTransformer()),("tree",BallTreePredictor(average=True)),("output",DumbOutput())] 
 pipe = Pipeline(pipe_components)
 with open(DATA_PATH) as file:
     data =  json.load(file)
@@ -43,13 +44,9 @@ def recommendations():
     docs = get_by_id_map(data,query,id_to_index)
     result = pipe.predict(docs)
 
-    # Temporal solution, take first output only.
+    print(result)
 
-    distance = result[0][0]
-    indexes = result[1][0]
-
-    output = [{ "distance":d, "id": index_to_id[index]} for d,index in zip(distance,indexes)]
-
+    output = [{ "score":d, "id": index_to_id[index]} for d,index in zip(result[0],result[1])]
     # Dummmy response
     response_template = json.loads("""
             {

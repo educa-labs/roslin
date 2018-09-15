@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from sklearn.neighbors import BallTree, DistanceMetric
 import pickle
-
+import numpy as np
 
 class MongoSerializable:
     def save(self, db_name, key):
@@ -19,9 +19,11 @@ wrapper for sklearn BallTree that can be added to a pipeline
 
 class BallTreePredictor(MongoSerializable):
     
-    def __init__(self,k=5):
+    def __init__(self,k=5,average=False):
         self.tree = None
-        self.k=k
+        self.k=k 
+        self.average = average
+
         
     def set_neighbors(self,k):
         self.k = k
@@ -30,8 +32,13 @@ class BallTreePredictor(MongoSerializable):
         self.tree = BallTree(X)
         return self
         
-    def predict(self,X):
-        return self.tree.query(X,self.k)
+    def transform(self,X):
+        if not self.average:
+            return self.tree.query(X,self.k)
+        else:
+            print(X.shape)
+            print(np.array([np.mean(X,axis=0)]))
+            return self.tree.query(np.array([np.mean(X,axis=0)]),self.k)
 
 
 def object_cols_to_category(data_frame):
@@ -133,7 +140,7 @@ class KNNPredictor(MongoSerializable):
         
         return self
     
-    def predict(self, X):
+    def transform(self, X):
         X    = object_cols_to_category(X)
         X, _ = category_cols_to_codes(X, self.cat_cols, cat_cols_codes=self.cat_cols_codes)
 
