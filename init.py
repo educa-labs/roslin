@@ -21,7 +21,7 @@ def KNN_BUILDER():
     pipeline_components = [('json', JSONTransformer()),
                            ('tree', KNNPredictor())]
 
-    return Pipeline(pipeline_component)
+    return Pipeline(pipeline_components)
 
 
 def HIELO_BUILDER():
@@ -55,4 +55,4 @@ def init(clear=False):
 
 
 if __name__ == '__main__':
-    print(init())
+    init(clear=False)

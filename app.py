@@ -59,7 +59,7 @@ def recommendations():
     return resp
 
 
-@app.route("/api/v1/projectmetas", methods=["POST"])
+@app.route("/api/v1/projectmetas", methods=["GET"])
 def project_loading():
     try:
         init(clear=True)
