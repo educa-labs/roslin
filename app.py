@@ -10,30 +10,20 @@ from sklearn.pipeline import Pipeline
 from transformers.trees import BallTreePredictor
 from transformers.json_transformers import JsonToTagsTransform
 from transformers.embedders import LdaTransformer
-from transformers.outputs import DumbOutput,GreedyOutput,Output
-from utils.json_utils import get_by_id, NumpyEncoder, map_from_id, map_to_id,get_by_id_map
+from transformers.outputs import DumbOutput, GreedyOutput, Output
+from utils.json_utils import get_by_id, NumpyEncoder, map_from_id, map_to_id, get_by_id_map
 
+from init import init
 
-#Constants
-DATA_PATH= "data.json"
-
-
-# Data and initial pipe training
-pipe_components =[("json",JsonToTagsTransform()),("embedder",LdaTransformer()),("tree",BallTreePredictor(average=True)),("output",DumbOutput())] 
-pipe = Pipeline(pipe_components)
-with open(DATA_PATH) as file:
-    data =  json.load(file)
-
-index_to_id = map_to_id(data)
-id_to_index = map_from_id(data) 
-
-pipe.fit(data)
+models, data, index_to_id, id_to_index = init()
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/api/v1/recommendations", methods = ["GET"])
+
+@app.route("/api/v1/recommendations", methods=["GET"])
 def recommendations():
+    pipe = models[int(request.args.get('model'))]
     params = request.args.get('project_meta_ids')
     try:
         query = [int(x) for x in params.split(",")]
@@ -41,12 +31,13 @@ def recommendations():
         return Response(json.dumps({"error": "bad params"}, status=400))
     print(query)
 
-    docs = get_by_id_map(data,query,id_to_index)
+    docs = get_by_id_map(data, query, id_to_index)
     result = pipe.predict(docs)
 
     print(result)
 
-    output = [{ "score":d, "id": index_to_id[index]} for d,index in zip(result[0],result[1])]
+    output = [{"score": d, "id": index_to_id[index]}
+              for d, index in zip(result[0], result[1])]
     # Dummmy response
     response_template = json.loads("""
             {
@@ -61,22 +52,24 @@ def recommendations():
             }
     """)
 
-
     response_template['data']['attributes']['project_metas'] = output
     print(response_template)
-    resp = Response(json.dumps(response_template, cls=NumpyEncoder), status=200, mimetype='application/json')
+    resp = Response(json.dumps(response_template, cls=NumpyEncoder),
+                    status=200, mimetype='application/json')
     return resp
 
 
-@app.route("/api/v1/projectmetas", methods = ["POST"])
+@app.route("/api/v1/projectmetas", methods=["POST"])
 def project_loading():
     params = request.get_json()
     print(params)
 
     # Dummmy response
 
-    resp = Response(json.dumps(params), status=200, mimetype='application/json')
+    resp = Response(json.dumps(params), status=200,
+                    mimetype='application/json')
     return resp
 
-if __name__ ==  '__main__':
+
+if __name__ == '__main__':
     app.run()

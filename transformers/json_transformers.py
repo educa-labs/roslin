@@ -2,6 +2,7 @@ import json
 from functools import reduce
 from nltk import word_tokenize
 from unidecode import unidecode
+import pandas as pd
 
 '''
 transformer object that turns the data json into arrays of tokenized words.
