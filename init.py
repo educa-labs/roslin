@@ -1,4 +1,6 @@
 import json as js
+import pickle
+
 from sklearn.pipeline import Pipeline
 from utils.json_utils import map_to_id, map_from_id
 from collections import OrderedDict
@@ -15,7 +17,7 @@ from transformers.json_transformers import JSONTransformer
 
 # LDA
 from transformers.trees import BallTreePredictor
-from transformers.embedders import LdaTransformer
+from transformers.embedders import LdaTransformer, TfIdfGloveTransformer
 from transformers.json_transformers import JsonToTagsTransform, JsonTransform
 
 
@@ -26,7 +28,7 @@ def KNN_BUILDER():
 
     return Pipeline(pipeline_components)
 
-
+#LDA MODELS
 def LDA_TAGS_AVERAGE_BUILDER():
     pipeline_components = [('json', JsonToTagsTransform(
     )), ('embedder', LdaTransformer()), ('tree', BallTreePredictor(average=True)), ('output', DumbOutput())]
@@ -51,6 +53,25 @@ def LDA_WORDS_GREEDY_BUILDER():
 
     return Pipeline(pipeline_components)
 
+# Glove Models
+
+with open("word_hash","rb") as file:
+    word_hash = pickle.load(file)
+
+def GLOVE_AVERAGE_BUILDER():
+    pipeline_components = [('json', JsonTransform(
+    )), ('embedder', TfIdfGloveTransformer(word_embedder=word_hash)), ('tree', BallTreePredictor(average=True)), ('output', DumbOutput())]
+
+    return Pipeline(pipeline_components)
+
+def GLOVE_GREEDY_BUILDER():
+    pipeline_components = [('json', JsonTransform(
+    )), ('embedder', TfIdfGloveTransformer(word_embedder=word_hash)), ('tree', BallTreePredictor()), ('output', GreedyOutput())]
+
+    return Pipeline(pipeline_components)
+
+
+
 def init(clear=False):
     db_name = 'test-database'
     collection_name = 'models'
@@ -66,6 +87,9 @@ def init(clear=False):
 
     models['ldaw_av_builder'] = (LDA_WORDS_AVERAGE_BUILDER, data)
     models['ldaw_greedy_builder'] = (LDA_WORDS_GREEDY_BUILDER,data)
+
+    models['glove_av_builder'] = (GLOVE_AVERAGE_BUILDER,data)
+    models['glove_greedy_builder'] = (GLOVE_GREEDY_BUILDER,data)
     
 
     models = load_models(
