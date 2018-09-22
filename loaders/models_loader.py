@@ -1,3 +1,4 @@
+import os
 import pickle
 
 
@@ -5,10 +6,10 @@ import pickle
 from pymongo import MongoClient
 
 
-def save(model, db_name, collection_name, key, client=None):
-    if client is None:
-        client = MongoClient()
+MONGODB_URI_KEY = 'MONGODB_URI'
 
+
+def save(model, db_name, collection_name, key, client):
     db = client[db_name]
     collection = db[collection_name]
 
@@ -44,7 +45,16 @@ def load_model(collection, key):
 def load_models(db_name, collection_name, models):
     loaded_models = {}
 
-    with MongoClient() as client:
+    if MONGODB_URI_KEY in os.environ:
+        uri = os.environ[MONGODB_URI_KEY]
+
+        print('Found MONGODB_URI environment variable: {0}'.format(uri))
+
+        client = MongoClient(uri)
+    else:
+        client = MongoClient()
+
+    with client:
         db = client[db_name]
         collection = db[collection_name]
 
