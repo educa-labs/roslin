@@ -36,8 +36,6 @@ class BallTreePredictor(MongoSerializable):
         if not self.average:
             return self.tree.query(X,self.k)
         else:
-            print(X.shape)
-            print(np.array([np.mean(X,axis=0)]))
             return self.tree.query(np.array([np.mean(X,axis=0)]),self.k)
 
 
