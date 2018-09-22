@@ -32,7 +32,7 @@ def formatter(X_embedded, raw_json):
     data_frame = pd.DataFrame(list(map(formatter, zip(X_embedded, raw_json))))
     header = ['0', '1', 'id', 'file']
 
-    data_frame.to_csv('reduce_dimensionality.csv', header=header, index=False)
+    data_frame.to_csv('visualization/reduce_dimensionality.csv', header=header, index=False)
 
 
 if __name__ == '__main__':
