@@ -59,16 +59,14 @@ def recommendations():
     return resp
 
 
-@app.route("/api/v1/projectmetas", methods=["POST"])
+@app.route("/api/v1/projectmetas", methods=["GET"])
 def project_loading():
-    params = request.get_json()
-    print(params)
+    try:
+        init(clear=True)
 
-    # Dummmy response
-
-    resp = Response(json.dumps(params), status=200,
-                    mimetype='application/json')
-    return resp
+        return Response(status=204, mimetype='application/json')
+    except Exception as e:
+        return Response(str(e), status=500, mimetype='application/json')
 
 
 if __name__ == '__main__':
