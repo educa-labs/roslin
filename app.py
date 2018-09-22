@@ -29,9 +29,12 @@ def recommendations():
         query = [int(x) for x in params.split(",")]
     except TypeError:
         return Response(json.dumps({"error": "bad params"}, status=400))
-    print(query)
 
-    docs = get_by_id_map(data, query, id_to_index)
+    try:
+        docs = get_by_id_map(data, query, id_to_index)
+    except KeyError:
+        return Response(json.dumps({"error": "not found"}, status=404))
+
     result = pipe.predict(docs)
 
     print(result)
