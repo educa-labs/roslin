@@ -42,16 +42,17 @@ def load_model(collection, key):
         return pickle.loads(cursor[0][key])
 
 
-def load_models(db_name, collection_name, models, clear=False):
+def load_models(collection_name, models, clear=False):
     loaded_models = {}
 
     if MONGODB_URI_KEY in os.environ:
         uri = os.environ[MONGODB_URI_KEY]
-
+        db_name = os.environ['MONGO_DB_DB']
         print('Found MONGODB_URI environment variable: {0}'.format(uri))
 
         client = MongoClient(uri)
     else:
+        db_name = 'test_database'
         client = MongoClient()
 
     with client:

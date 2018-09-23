@@ -73,7 +73,6 @@ def GLOVE_GREEDY_BUILDER():
 
 
 def init(clear=False):
-    db_name = 'test-database'
     collection_name = 'models'
 
     load_data()
@@ -93,7 +92,6 @@ def init(clear=False):
     
 
     models = load_models(
-        db_name=db_name,
         collection_name=collection_name,
         models=models,
         clear=clear
