@@ -1,7 +1,7 @@
 from sklearn.neighbors import BallTree, DistanceMetric
 import pickle
 import numpy as np
-
+import pandas as pd
 
 class MongoSerializable:
     def save(self, db_name, key):
@@ -63,10 +63,9 @@ def category_cols_to_codes(data_frame, cat_cols, cat_cols_codes=None):
             }
 
             cat_cols_codes[col] = cat_code_mapping
-    
+    print(data_frame)
     for col in cat_cols:
         new_col = []
-        
         for value in data_frame[col]:
             new_col.append(cat_cols_codes[col][value] if value else 0)
         
@@ -120,7 +119,7 @@ class KNNPredictor(MongoSerializable):
         self.tree = None
 
     def fit(self, X, y=None):
-        df = object_cols_to_category(X)
+        df = object_cols_to_category(pd.DataFrame(X))
 
         self.cat_cols = df.select_dtypes(include=['category']).columns.values
         self.con_cols = df.select_dtypes(include=['float64']).columns.values
