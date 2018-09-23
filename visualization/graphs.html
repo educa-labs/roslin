@@ -8,15 +8,29 @@
     <script src="scatter.js" charset="utf-8"></script>
   </head>
   <body>
-    <div id="title">
-    </div>
     <div id="graphs">
-      <div id="images">
-        <h4>Image Plot</h4>
+      <div id="lda">
+        <h4>Lda Tag Embeddings</h4>
       </div>
       <script>
-        scatter("#images","reduce_dimensionality.csv")
+        scatter("#lda","data/lda_av.csv")
       </script>
     </div>
+    <div id="graphs">
+        <div id="ldaw">
+          <h4>Lda Word Embeddings</h4>
+        </div>
+        <script>
+          scatter("#ldaw","data/ldaw_av.csv")
+        </script>
+      </div>
+      <div id="graphs">
+          <div id="glove">
+            <h4>Glove Embeddings</h4>
+          </div>
+          <script>
+            scatter("#glove","data/glove_av.csv")
+          </script>
+        </div>
   </body>
 </html>
