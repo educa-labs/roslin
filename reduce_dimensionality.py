@@ -3,6 +3,7 @@ import pandas as pd
 
 from sklearn.pipeline import Pipeline
 
+
 # Dimensionality reduction algorithms
 from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
@@ -22,7 +23,6 @@ def reduce_dimensionality(pipeline, raw_json, algorithm=TSNE):
 
     return algorithm(n_components=2).fit_transform(X)
 
-
 def formatter(X_embedded, raw_json, output_filename):
     def formatter(x):
         embedded, raw = x
@@ -38,7 +38,6 @@ def formatter(X_embedded, raw_json, output_filename):
 
 if __name__ == '__main__':
     raw_json = js.load(open('data.json', encoding='utf-8'))
-
     pipelines = [
         (LDA_TAGS_AVERAGE_BUILDER(), 'visualization/lda_av.csv'),
         (LDA_TAGS_GREEDY_BUILDER(), 'visualization/lda_greedy.csv'),
@@ -54,3 +53,4 @@ if __name__ == '__main__':
             raw_json=raw_json,
             output_filename=output_filename
         )
+
