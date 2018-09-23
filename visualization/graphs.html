@@ -1,10 +1,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Alex Net Features - TSNE</title>
+    <title>Roslin models</title>
     <link rel="stylesheet" href="style.css" charset="utf-8">
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="scatter.js" charset="utf-8"></script>
   </head>
   <body>
     <div id="title">
@@ -13,7 +14,9 @@
       <div id="images">
         <h4>Image Plot</h4>
       </div>
-      <script src="images.js" charset="utf-8"></script>
+      <script>
+        scatter("#images","reduce_dimensionality.csv")
+      </script>
     </div>
   </body>
 </html>
