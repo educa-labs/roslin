@@ -44,8 +44,6 @@ function scatter( selector, path){
         .orient("left")
         .tickSize(-width);
 
-    var color = d3.scale.category10();
-
     var tip = d3.tip()
         .attr("class", "d3-tip")
         .offset([-10, 0])
