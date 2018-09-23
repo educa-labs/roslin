@@ -9,9 +9,9 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 
 # Pipeline builders
-from builders import KNN_BUILDER
-from builders import LDA_TAGS_AVERAGE_BUILDER, LDA_TAGS_GREEDY_BUILDER, LDA_WORDS_AVERAGE_BUILDER, LDA_WORDS_GREEDY_BUILDER
-from builders import GLOVE_AVERAGE_BUILDER, GLOVE_GREEDY_BUILDER
+
+from builders import LDA_TAGS_AVERAGE_BUILDER, LDA_WORDS_AVERAGE_BUILDER
+from builders import GLOVE_AVERAGE_BUILDER
 
 
 def reduce_dimensionality(pipeline, raw_json, algorithm=TSNE):
@@ -39,12 +39,9 @@ def formatter(X_embedded, raw_json, output_filename):
 if __name__ == '__main__':
     raw_json = js.load(open('data.json', encoding='utf-8'))
     pipelines = [
-        (LDA_TAGS_AVERAGE_BUILDER(), 'visualization/lda_av.csv'),
-        (LDA_TAGS_GREEDY_BUILDER(), 'visualization/lda_greedy.csv'),
-        (LDA_WORDS_AVERAGE_BUILDER(), 'visualization/ldaw_av.csv'),
-        (LDA_WORDS_GREEDY_BUILDER(), 'visualization/ldaw_greedy.csv'),
-        (GLOVE_AVERAGE_BUILDER(), 'visualization/glove_av.csv'),
-        (GLOVE_GREEDY_BUILDER(), 'visualization/glove_greedy.csv'),
+        (LDA_TAGS_AVERAGE_BUILDER(), 'visualization/data/lda_av.csv'),
+        (LDA_WORDS_AVERAGE_BUILDER(), 'visualization/data/ldaw_av.csv'),
+        (GLOVE_AVERAGE_BUILDER(), 'visualization/data/glove_av.csv'),
     ]
 
     for pipeline, output_filename in pipelines:
