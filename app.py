@@ -28,10 +28,13 @@ def recommendations():
     try:
         query = [int(x) for x in params.split(",")]
     except TypeError:
-        return Response(json.dumps({"error": "bad params"}, status=400))
-    print(query)
+        return Response(json.dumps({"error": "bad params"}), status=400)
 
-    docs = get_by_id_map(data, query, id_to_index)
+    try:
+        docs = get_by_id_map(data, query, id_to_index)
+    except KeyError:
+        return Response(json.dumps({"error": "not found"}), status=404)
+
     result = pipe.predict(docs)
 
     print(result)
@@ -59,16 +62,14 @@ def recommendations():
     return resp
 
 
-@app.route("/api/v1/projectmetas", methods=["POST"])
+@app.route("/api/v1/projectmetas", methods=["GET"])
 def project_loading():
-    params = request.get_json()
-    print(params)
+    try:
+        init(clear=True)
 
-    # Dummmy response
-
-    resp = Response(json.dumps(params), status=200,
-                    mimetype='application/json')
-    return resp
+        return Response(status=204, mimetype='application/json')
+    except Exception as e:
+        return Response(str(e), status=500, mimetype='application/json')
 
 
 if __name__ == '__main__':

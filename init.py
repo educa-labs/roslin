@@ -1,37 +1,19 @@
 import json as js
+import pickle
+
+from collections import OrderedDict
 from sklearn.pipeline import Pipeline
 from utils.json_utils import map_to_id, map_from_id
 
-from loaders.models_loader import load_models
 from loaders.data_loader import load_data
+from loaders.models_loader import load_models
+
+from builders import KNN_BUILDER
+from builders import LDA_TAGS_AVERAGE_BUILDER, LDA_TAGS_GREEDY_BUILDER, LDA_WORDS_AVERAGE_BUILDER, LDA_WORDS_GREEDY_BUILDER
+from builders import GLOVE_AVERAGE_BUILDER, GLOVE_GREEDY_BUILDER
 
 
-# KNN
-from transformers.trees import KNNPredictor
-from transformers.json_transformers import JSONTransformer
-
-
-# Hielo
-from transformers.trees import BallTreePredictor
-from transformers.embedders import LdaTransformer
-from transformers.json_transformers import JsonToTagsTransform
-
-
-def KNN_BUILDER():
-    pipeline_components = [('json', JSONTransformer()),
-                           ('tree', KNNPredictor())]
-
-    return Pipeline(pipeline_components)
-
-
-def HIELO_BUILDER():
-    pipeline_components = [('json', JsonToTagsTransform(
-    )), ('embedder', LdaTransformer()), ('tree', BallTreePredictor())]
-
-    return Pipeline(pipeline_components)
-
-
-def init():
+def init(clear=False):
     db_name = 'test-database'
     collection_name = 'models'
 
@@ -39,19 +21,27 @@ def init():
 
     data = js.load(open('data.json', encoding='utf-8'))
 
-    models = {
-        'knn': (KNN_BUILDER, data),
-        'hielo': (HIELO_BUILDER, data)
-    }
+    models = OrderedDict()
+
+    models['knn'] = (KNN_BUILDER, data)
+
+    models['lda_av'] = (LDA_TAGS_AVERAGE_BUILDER, data)
+    models['lda_greedy'] = (LDA_TAGS_GREEDY_BUILDER, data)
+    models['ldaw_av'] = (LDA_WORDS_AVERAGE_BUILDER, data)
+    models['ldaw_greedy'] = (LDA_WORDS_GREEDY_BUILDER, data)
+
+    models['glove_av'] = (GLOVE_AVERAGE_BUILDER, data)
+    models['glove_greedy'] = (GLOVE_GREEDY_BUILDER, data)
 
     models = load_models(
         db_name=db_name,
         collection_name=collection_name,
-        models=models
+        models=models,
+        clear=clear
     )
 
     return list(models.values()), data, map_to_id(data), map_from_id(data)
 
 
 if __name__ == '__main__':
-    print(init())
+    init(clear=False)
