@@ -24,6 +24,7 @@ CORS(app)
 @app.route("/api/v1/recommendations", methods=["GET"])
 def recommendations():
     pipe = models[int(request.args.get('model'))]
+    k = int(request.args.get('num_recs'))
     params = request.args.get('project_meta_ids')
     try:
         query = [x for x in params.split(",")]
@@ -39,7 +40,7 @@ def recommendations():
 
     print(result)
 
-    output = [{"score": d, "id": index_to_id[index]}
+    output = [{"score": d, "quick_code": index_to_id[index]}
               for d, index in zip(result[0], result[1])]
     # Dummmy response
     response_template = json.loads("""
