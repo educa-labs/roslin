@@ -26,8 +26,8 @@ def recommendations():
     pipe = models[int(request.args.get('model'))]
     params = request.args.get('project_meta_ids')
     try:
-        query = [int(x) for x in params.split(",")]
-    except TypeError:
+        query = [x for x in params.split(",")]
+    except [TypeError, ValueError]:
         return Response(json.dumps({"error": "bad params"}), status=400)
 
     try:
