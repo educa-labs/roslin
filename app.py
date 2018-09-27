@@ -35,11 +35,8 @@ def recommendations():
         docs = get_by_id_map(data, query, id_to_index)
     except KeyError:
         return Response(json.dumps({"error": "not found"}), status=404)
-
+    set_output(pipe,k)
     result = pipe.predict(docs)
-
-    print(result)
-
     output = [{"score": d, "quick_code": index_to_id[index]}
               for d, index in zip(result[0], result[1])]
     # Dummmy response
@@ -57,7 +54,6 @@ def recommendations():
     """)
 
     response_template['data']['attributes']['project_metas'] = output
-    print(response_template)
     resp = Response(json.dumps(response_template, cls=NumpyEncoder),
                     status=200, mimetype='application/json')
     return resp
@@ -71,6 +67,11 @@ def project_loading():
         return Response(status=204, mimetype='application/json')
     except Exception as e:
         return Response(str(e), status=500, mimetype='application/json')
+
+def set_output(pipe,k):
+    pipe.named_steps['output'].set_k(k)
+    pipe.named_steps['tree'].set_k(k)
+
 
 
 if __name__ == '__main__':

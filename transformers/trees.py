@@ -25,7 +25,7 @@ class BallTreePredictor(MongoSerializable):
         self.average = average
 
         
-    def set_neighbors(self,k):
+    def set_k(self,k):
         self.k = k
         
     def fit(self,X,y=None):
@@ -143,3 +143,7 @@ class KNNPredictor(MongoSerializable):
         prediction = self.tree.query(X, self.k)
         
         return prediction
+        
+    def set_k(self,k):
+        self.k = k
+        

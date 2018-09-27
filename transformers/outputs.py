@@ -12,6 +12,9 @@ class Output:
     def calculate_score(distance):
         return (1/(1+distance))
 
+    def set_k(self,k):
+        pass
+
 # Temporal solution, take neighbors of first input
 class DumbOutput(Output):
 
@@ -38,3 +41,6 @@ class GreedyOutput(Output):
                 if len(scores) == self.k:
                     return [scores,indexes]
         return [scores,indexes]
+
+    def set_k(self,k):
+        self.k = k
