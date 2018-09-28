@@ -63,7 +63,6 @@ def category_cols_to_codes(data_frame, cat_cols, cat_cols_codes=None):
             }
 
             cat_cols_codes[col] = cat_code_mapping
-    print(data_frame)
     for col in cat_cols:
         new_col = []
         for value in data_frame[col]:
