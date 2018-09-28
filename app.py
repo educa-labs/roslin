@@ -62,13 +62,14 @@ def recommendations():
 @app.route("/api/v1/projectmetas", methods=["GET"])
 def project_loading():
     try:
-        init(clear=True)
+        models, data, index_to_id, id_to_index = init(clear=True)
 
         return Response(status=204, mimetype='application/json')
     except Exception as e:
         return Response(str(e), status=500, mimetype='application/json')
 
 def set_output(pipe,k):
+    print(pipe.named_steps)
     pipe.named_steps['output'].set_k(k)
     pipe.named_steps['tree'].set_k(k)
 
