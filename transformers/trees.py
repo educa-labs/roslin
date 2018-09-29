@@ -63,10 +63,17 @@ def category_cols_to_codes(data_frame, cat_cols, cat_cols_codes=None):
             }
 
             cat_cols_codes[col] = cat_code_mapping
+
     for col in cat_cols:
-        new_col = []
-        for value in data_frame[col]:
-            new_col.append(cat_cols_codes[col][value] if value else 0)
+        # if col not in data_frame es un parche para nulos...
+        if col not in data_frame:
+            new_col = [0] * data_frame.shape[0]
+        else:
+            new_col = []
+
+            for value in data_frame[col]:
+                # if value else 0 es un parche para nulos...
+                new_col.append(cat_cols_codes[col][value] if value else 0)
         
         data_frame[col] = new_col
 

@@ -42,4 +42,9 @@ def init(clear=False):
 
 
 if __name__ == '__main__':
-    init(clear=False)
+    data = js.load(open('data.json', encoding='utf-8'))
+    model = KNN_BUILDER().fit(data)
+
+    example = data[map_from_id(data)['CTLY']]
+
+    model.predict([example])
