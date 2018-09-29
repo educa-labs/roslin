@@ -24,8 +24,9 @@ CORS(app)
 @app.route("/api/v1/recommendations", methods=["GET"])
 def recommendations():
     pipe = models[int(request.args.get('model'))]
-    k = int(request.args.get('num_recs'))
     params = request.args.get('project_meta_ids')
+    output_length = int(request.args.get('num_recs')) 
+    k = output_length + len(params)
     try:
         query = [x for x in params.split(",")]
     except [TypeError, ValueError]:
@@ -39,6 +40,7 @@ def recommendations():
     result = pipe.predict(docs)
     output = [{"score": d, "quick_code": index_to_id[index]}
               for d, index in zip(result[0], result[1])]
+    output = filter_output(params,output,output_length)
     # Dummmy response
     response_template = json.loads("""
             {
@@ -72,6 +74,14 @@ def set_output(pipe,k):
     print(pipe.named_steps)
     pipe.named_steps['output'].set_k(k)
     pipe.named_steps['tree'].set_k(k)
+
+def filter_output(input,output,output_size):
+    result = list(filter(lambda item: item['quick_code'] not in input,output))
+    result = sorted(result, key=lambda x: x['score'], reverse=True)
+    return result[:output_size]
+
+
+
 
 
 
