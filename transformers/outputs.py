@@ -37,7 +37,8 @@ class GreedyOutput(Output):
         for j in range(len(X[0][0])):
             for i in range(len(X[0])):
                 scores.append(GreedyOutput.calculate_score(X[0][i][j]))
-                indexes.append(X[1][i][j])
+                if X[1][i][j] not in indexes:
+                    indexes.append(X[1][i][j])
                 if len(scores) == self.k:
                     return [scores,indexes]
         return [scores,indexes]
