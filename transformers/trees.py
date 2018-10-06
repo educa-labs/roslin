@@ -28,7 +28,7 @@ COLUMNS_WEIGHTS = {
     'proporcion_cajones_a_puertas': 1,
     'textura': .66,
     'tonalidad': .66,
-    'valor_casa': 1
+    'valor_casa': 1,
     'visualizacion': .66,
     'volumetrias': .66,
 }
@@ -160,7 +160,7 @@ class GowerDistance:
 
         for col in self.con_cols:
             distance += np.dot(self.W_i[col], GowerDistance.con_dist(
-                X_j[self.cols_hash[col]], X_k[self.cols_hash[col]], self.R_i[self.cols_hash[col]]))
+                X_j[self.cols_hash[col]], X_k[self.cols_hash[col]], self.R_i[col]))
 
         return distance / self.W_i_sum
 
@@ -188,8 +188,7 @@ class KNNPredictor(MongoSerializable):
         cols_hash = {col: i for i, col in enumerate(df.columns.values)}
 
         W_i = COLUMNS_WEIGHTS
-        R_i = [np.max(df[col]) - np.min(df[col])
-               if col in self.con_cols else 1 for col in cols_hash]
+        R_i = {col: np.max(df[col]) - np.min(df[col]) for col in self.con_cols}
 
         gower_distance = GowerDistance(
             cols_hash, self.cat_cols, self.con_cols, W_i, R_i)
