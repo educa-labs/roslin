@@ -121,3 +121,28 @@ API has 2 endpoints.
 6. Greedy Glove:
 
     Same as but instead of taking the average of the input vector, it greedily choses the most similar items to the ones in the input.
+
+
+## Components / Design
+
+Expendable directories and files:
+
+* `jupyter` (deprecated): contains jupyter notebooks for the initial model and data testing. Deprecated after first version of the functioning web service was developed.
+
+* `visualization`: files needed to run the D3.js visualization. More information below.
+
+* `reduce_dimensionality.py`: script to download the data and process it to create 2 dimensional vector embeddings for the visualization.
+
+Main modules and files:
+
+* `app.py`: this is the main flask app, imports all other modules, loads the models, and defines the routes.
+
+* `builders.py`: Defines the models as sklearn pipeline objects, in this file model structure should be updated, and new models should be added.
+
+* `init.py`: Defines function that starts the web service, downloads the needed data, and generates the necessary variables.
+
+* `transformers`: Module that defines the components to create the model pipelines, includes the json parsers, vector embedders, trees for Knn search and output formatters.
+
+* `loaders`: Modules that define the functions that download the data, and load the models from mongoDB.
+
+* `utils`: Module with useful json and data manipulation functions.
