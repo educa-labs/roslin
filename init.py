@@ -38,7 +38,7 @@ def init(clear=False):
         clear=clear
     )
 
-    return list(models.values()), data, map_to_id(data), map_from_id(data)
+    return models, data, map_to_id(data), map_from_id(data)
 
 
 if __name__ == '__main__':
