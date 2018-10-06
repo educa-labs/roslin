@@ -114,11 +114,19 @@ API has 2 endpoints.
 
     Same as 2 but bases the TF-IDF and LDA algorithms in words instead of complete tags.
 
-5. Averaged Glove ('glove_av'):
+5. Averaged Word LDA ('ldan_av'):
+
+    Same as 1 but adds the numerical tags as if they were normal tags.
+
+6. Greedy Word LDA('ldan_greedy'):
+
+    Same as 2 but adds the numerical tags as if they were normal tags.
+
+7. Averaged Glove ('glove_av'):
 
     Maps every document to a 300 dimensional vector, using a pre trained model (Glove) that considers the semantics of a word. The document vector is computed as a weighted average of the word vectors using weights computed with TF-IDF algorithm.
 
-6. Greedy Glove ('glove_greedy'):
+8. Greedy Glove ('glove_greedy'):
 
     Same as but instead of taking the average of the input vector, it greedily choses the most similar items to the ones in the input.
 
