@@ -9,7 +9,7 @@ from loaders.data_loader import load_data
 from loaders.models_loader import load_models
 
 from builders import KNN_BUILDER
-from builders import LDA_TAGS_AVERAGE_BUILDER, LDA_TAGS_GREEDY_BUILDER, LDA_WORDS_AVERAGE_BUILDER, LDA_WORDS_GREEDY_BUILDER
+from builders import LDA_TAGS_AVERAGE_BUILDER, LDA_TAGS_GREEDY_BUILDER, LDA_WORDS_AVERAGE_BUILDER, LDA_WORDS_GREEDY_BUILDER,LDA_TAGS_NUM_AVERAGE_BUILDER,LDA_TAGS_NUM_GREEDY_BUILDER
 from builders import GLOVE_AVERAGE_BUILDER, GLOVE_GREEDY_BUILDER
 
 '''
@@ -34,6 +34,9 @@ def init(clear=False):
     models['lda_greedy'] = (LDA_TAGS_GREEDY_BUILDER, data)
     models['ldaw_av'] = (LDA_WORDS_AVERAGE_BUILDER, data)
     models['ldaw_greedy'] = (LDA_WORDS_GREEDY_BUILDER, data)
+
+    models['ldan_av'] = (LDA_TAGS_NUM_AVERAGE_BUILDER, data)
+    models['ldan_greedy'] = (LDA_TAGS_NUM_GREEDY_BUILDER, data)
 
     models['glove_av'] = (GLOVE_AVERAGE_BUILDER, data)
     models['glove_greedy'] = (GLOVE_GREEDY_BUILDER, data)
