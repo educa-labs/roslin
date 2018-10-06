@@ -146,3 +146,8 @@ Main modules and files:
 * `loaders`: Modules that define the functions that download the data, and load the models from mongoDB.
 
 * `utils`: Module with useful json and data manipulation functions.
+
+## Visualization
+
+The visualization consists of a 2D scatter plot, that uses the vector based models and a dimensionality reduction algorithm, map the items into a two dimensional vector. To use first run the `reduce_dimensionality.py` script, and then open  `graphs.html` with firefox browser or serve the file with a local server and open with any browser. hover over the points to see the kitchen images.
+
