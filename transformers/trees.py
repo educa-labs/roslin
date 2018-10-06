@@ -7,6 +7,33 @@ import pandas as pd
 import pickle
 
 
+COLUMNS_WEIGHTS = {
+    'accesorios': .66,
+    'color_cubierta': .66,
+    'configuracion': .66,
+    'contraste': .66,
+    'cubierta': .66,
+    'diseno_y_creatividad': 1,
+    'ejecucion': 1,
+    'espacialidad': .66,
+    'espesor_cubierta': .66,
+    'estilo': .66,
+    'exigencias_tecnicas': 1,
+    'lineas': .66,
+    'luminosidad': .66,
+    'materialidad': .66,
+    'modulos': .66,
+    'percepcion_de_tamano': .66,
+    'precio_estimado': 1,
+    'proporcion_cajones_a_puertas': 1,
+    'textura': .66,
+    'tonalidad': .66,
+    'valor_casa': 1
+    'visualizacion': .66,
+    'volumetrias': .66,
+}
+
+
 class MongoSerializable:
     def save(self, db_name, key):
         with MongoClient() as client:
@@ -24,7 +51,6 @@ wrapper for sklearn BallTree that can be added to a pipeline
 
 
 class BallTreePredictor(MongoSerializable):
-
     def __init__(self, k=5, average=False):
         self.tree = None
         self.k = k
@@ -98,7 +124,7 @@ def category_cols_to_codes(data_frame, cat_cols, cat_cols_codes=None):
     for null in nulls:
         nulls_ids.append((map_to_id(data)[null[0]], null[1]))
 
-    print(nulls_ids)
+    # print(nulls_ids)
     # END nulls debug
 
     return data_frame, cat_cols_codes
@@ -111,7 +137,7 @@ class GowerDistance:
         self.con_cols = con_cols
         self.W_i = W_i
         self.R_i = R_i
-        self.W_i_sum = np.sum(W_i)  # Micro-optimization
+        self.W_i_sum = np.sum(list(W_i.values()))  # Micro-optimization
 
     @staticmethod
     def cat_dist(c_j, c_k):
@@ -129,11 +155,11 @@ class GowerDistance:
         distance = 0
 
         for col in self.cat_cols:
-            distance += np.dot(self.W_i[self.cols_hash[col]], GowerDistance.cat_dist(
+            distance += np.dot(self.W_i[col], GowerDistance.cat_dist(
                 X_j[self.cols_hash[col]], X_k[self.cols_hash[col]]))
 
         for col in self.con_cols:
-            distance += np.dot(self.W_i[self.cols_hash[col]], GowerDistance.con_dist(
+            distance += np.dot(self.W_i[col], GowerDistance.con_dist(
                 X_j[self.cols_hash[col]], X_k[self.cols_hash[col]], self.R_i[self.cols_hash[col]]))
 
         return distance / self.W_i_sum
@@ -161,7 +187,7 @@ class KNNPredictor(MongoSerializable):
 
         cols_hash = {col: i for i, col in enumerate(df.columns.values)}
 
-        W_i = [.66 if col in self.cat_cols else 1 for col in cols_hash]
+        W_i = COLUMNS_WEIGHTS
         R_i = [np.max(df[col]) - np.min(df[col])
                if col in self.con_cols else 1 for col in cols_hash]
 

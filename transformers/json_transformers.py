@@ -72,14 +72,22 @@ class JSONTransformer:
     def preprocess_json(json):
         new_json = []
 
-        for instance in filter(lambda i: i['tags'] is not None, json):
+        for instance in filter(lambda i: i['tags'] is not None and i['numerical_tags'] is not None, json):
             new_instance = {}
             
+            # Adding tags
             for (key, value) in map(lambda t: t.split(':'), instance['tags']):
                 key = JSONTransformer.clear(key)
 
                 if key not in new_instance:
                     new_instance[key] = JSONTransformer.clear(value)
+
+            # Adding numerical_tags
+            for (key, value) in instance['numerical_tags'].items():
+                key = JSONTransformer.clear(key)
+
+                if key not in new_instance:
+                    new_instance[key] = float(value)
 
             new_json.append(new_instance)
 
