@@ -38,7 +38,7 @@ def recommendations():
     pipe = models[request.args.get('model')]
     params = request.args.get('project_meta_ids')
     output_length = int(request.args.get('num_recs')) 
-    k = output_length + len(params)
+    k = output_length #+ len(params)
     try:
         query = [x for x in params.split(",")]
     except [TypeError, ValueError]:
@@ -52,7 +52,7 @@ def recommendations():
     result = pipe.predict(docs)
     output = [{"score": d, "quick_code": index_to_id[index]}
               for d, index in zip(result[0], result[1])]
-    output = filter_output(params,output,output_length)
+    #output = filter_output(params,output,output_length)
     # Dummmy response
     response_template = json.loads("""
             {
