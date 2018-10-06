@@ -16,7 +16,6 @@ class MongoSerializable:
 '''
 wrapper for sklearn BallTree that can be added to a pipeline
 '''
-
 class BallTreePredictor(MongoSerializable):
     
     def __init__(self,k=5,average=False):

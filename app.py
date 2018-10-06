@@ -15,11 +15,23 @@ from utils.json_utils import get_by_id, NumpyEncoder, map_from_id, map_to_id, ge
 
 from init import init
 
+#load data and models
 models, data, index_to_id, id_to_index = init()
 
 app = Flask(__name__)
 CORS(app)
 
+'''
+Main route, returns recommendations with selected model
+
+Query string params
+
+project_meta_ids(string) (required): comma separated quick_codes for sample items to base recommendations on. Example: DXHT,UU4L
+
+model (string) (required): specifies model to compute recommendations. String keys are specified in models section.
+
+num_recs(int) (required): ammount of recommendations to return.
+'''
 
 @app.route("/api/v1/recommendations", methods=["GET"])
 def recommendations():
@@ -60,7 +72,11 @@ def recommendations():
                     status=200, mimetype='application/json')
     return resp
 
+'''
 
+Downloads data, retrains models and adds them to mongo DB. Takes time.
+
+'''
 @app.route("/api/v1/projectmetas", methods=["GET"])
 def project_loading():
     try:
@@ -70,11 +86,18 @@ def project_loading():
     except Exception as e:
         return Response(str(e), status=500, mimetype='application/json')
 
+'''
+helper function, sets the output size the final layers of the model to k.
+'''
 def set_output(pipe,k):
     print(pipe.named_steps)
     pipe.named_steps['output'].set_k(k)
     pipe.named_steps['tree'].set_k(k)
 
+
+'''
+removes from output the items in input, and then returns output but with length output_size
+'''
 def filter_output(input,output,output_size):
     result = list(filter(lambda item: item['quick_code'] not in input,output))
     result = sorted(result, key=lambda x: x['score'], reverse=True)

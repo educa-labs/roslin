@@ -7,7 +7,6 @@ import pandas as pd
 '''
 transformer object that turns the data json into arrays of tokenized words.
 '''
-
 class JsonTransform():
     
     '''
@@ -19,8 +18,6 @@ class JsonTransform():
     '''
     returns arrays of word arrays from tags
     '''    
-
-    
     def fit(self,X=None,y=None):
         return self
     

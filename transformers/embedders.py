@@ -9,7 +9,6 @@ Calculates embedding, mapping a tokenized document to a vector.
 To calculate the vector we use a weighted average of precomputed Glove Vectors. 
 Weights of the average are given by TFIDF scores.
 '''
-
 class TfIdfGloveTransformer():
     
     '''
@@ -39,7 +38,6 @@ class TfIdfGloveTransformer():
     '''
     returns embedding representation of documents in X
     '''
-    
     def transform(self,X):
         new_bows = [self.word_dict.doc2bow(doc) for doc in X]
         result = np.zeros((len(X),self.dim))
@@ -54,7 +52,6 @@ class TfIdfGloveTransformer():
 Generates doc embeddings baed on topic modelling.
 Does Tf-Idf transformation and then computes probability distibutions with LDA algorithm.
 """
-
 class LdaTransformer():
     """
     dim: amount of topics to model. aka output vector dimension.
