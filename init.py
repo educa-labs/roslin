@@ -12,7 +12,13 @@ from builders import KNN_BUILDER
 from builders import LDA_TAGS_AVERAGE_BUILDER, LDA_TAGS_GREEDY_BUILDER, LDA_WORDS_AVERAGE_BUILDER, LDA_WORDS_GREEDY_BUILDER
 from builders import GLOVE_AVERAGE_BUILDER, GLOVE_GREEDY_BUILDER
 
+'''
+Loads the models and data to memory,  returns all the needed  variables
+for the main app to work.
 
+After creating a new model on builders.py add it here, to the models hash for 
+it to be accesible through the api.
+'''
 def init(clear=False):
     collection_name = 'models'
 

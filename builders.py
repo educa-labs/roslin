@@ -14,7 +14,19 @@ from transformers.json_transformers import JsonToTagsTransform, JsonTransform
 # GLOVE transformers
 from transformers.outputs import GreedyOutput, DumbOutput
 
+'''
+This files determines the different model pipelines, in this file you should
+add new model generation functions. Excepting for knn, all pipelines consist
+of :
+- JSON transformer layer.
+- Embedder layer.
+- Tree layer.
+- Output Layer.
+'''
 
+
+# use this variables to keep the layer names standarized
+# this is important to access them later
 json_layer = 'json'
 embedder = 'embedder'
 tree = 'tree'
