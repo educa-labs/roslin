@@ -1,9 +1,8 @@
+from collections import OrderedDict
+from pymongo import MongoClient
+
 import os
 import pickle
-
-
-# Mongo
-from pymongo import MongoClient
 
 
 MONGODB_URI_KEY = 'MONGODB_URI'
@@ -43,7 +42,7 @@ def load_model(collection, key):
 
 
 def load_models(collection_name, models, clear=False):
-    loaded_models = {}
+    loaded_models = OrderedDict()
 
     if MONGODB_URI_KEY in os.environ:
         uri = os.environ[MONGODB_URI_KEY]

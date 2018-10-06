@@ -44,8 +44,13 @@ def init(clear=False):
         clear=clear
     )
 
-    return list(models.values()), data, map_to_id(data), map_from_id(data)
+    return models, data, map_to_id(data), map_from_id(data)
 
 
 if __name__ == '__main__':
-    init(clear=False)
+    data = js.load(open('data.json', encoding='utf-8'))
+    model = KNN_BUILDER().fit(data)
+
+    example = data[map_from_id(data)['CTLY']]
+
+    model.predict([example])

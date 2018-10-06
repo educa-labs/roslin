@@ -35,7 +35,7 @@ num_recs(int) (required): ammount of recommendations to return.
 
 @app.route("/api/v1/recommendations", methods=["GET"])
 def recommendations():
-    pipe = models[int(request.args.get('model'))]
+    pipe = models[request.args.get('model')]
     params = request.args.get('project_meta_ids')
     output_length = int(request.args.get('num_recs')) 
     k = output_length + len(params)
