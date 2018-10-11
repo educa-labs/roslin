@@ -9,7 +9,7 @@ from transformers.json_transformers import JSONTransformer
 # LDA transformers
 from transformers.trees import BallTreePredictor
 from transformers.embedders import LdaTransformer, TfIdfGloveTransformer
-from transformers.json_transformers import JsonToTagsTransform, JsonTransform
+from transformers.json_transformers import JsonToTagsTransform, JsonTransform, JsonToTagsNumericalTransformer
 
 # GLOVE transformers
 from transformers.outputs import GreedyOutput, DumbOutput
@@ -68,6 +68,19 @@ def LDA_WORDS_AVERAGE_BUILDER():
 
 def LDA_WORDS_GREEDY_BUILDER():
     pipeline_components = [(json_layer, JsonTransform(
+    )), (embedder, LdaTransformer()), (tree, BallTreePredictor()), (output, GreedyOutput())]
+
+    return Pipeline(pipeline_components)
+
+def LDA_TAGS_NUM_AVERAGE_BUILDER():
+    pipeline_components = [(json_layer, JsonToTagsNumericalTransformer(
+    )), (embedder, LdaTransformer()), (tree, BallTreePredictor(average=True)), (output, DumbOutput())]
+
+    return Pipeline(pipeline_components)
+
+
+def LDA_TAGS_NUM_GREEDY_BUILDER():
+    pipeline_components = [(json_layer, JsonToTagsNumericalTransformer(
     )), (embedder, LdaTransformer()), (tree, BallTreePredictor()), (output, GreedyOutput())]
 
     return Pipeline(pipeline_components)

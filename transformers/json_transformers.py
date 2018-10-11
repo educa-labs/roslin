@@ -57,6 +57,17 @@ class JsonToTagsTransform(JsonTransform):
     def process_tag_array(self,tags):
         return [tag.lower() for tag in tags]
 
+'''
+Adds numerical tags to tags transform
+'''
+class JsonToTagsNumericalTransformer(JsonToTagsTransform):
+
+    def data_to_tags(self,data):
+        return [instance["tags"] + JsonToTagsNumericalTransformer.taggize(instance['numerical_tags']) for instance in filter(lambda x: x["tags"],data)]
+
+    @staticmethod
+    def taggize(num_tag):
+        return ["{}:{}".format(key,value) for key, value in num_tag.items()]
 
 class JSONTransformer:
     @staticmethod
