@@ -1,6 +1,6 @@
 import numpy as np
 from gensim import corpora
-from gensim.models import TfidfModel, LdaModel
+from gensim.models import TfidfModel, LdaModel,LsiModel
 from gensim.models.keyedvectors import KeyedVectors
 
 
@@ -69,7 +69,8 @@ class LdaTransformer():
         self.bows = [self.word_dict.doc2bow(doc) for doc in X]
         self.tfidf = TfidfModel(self.bows,normalize=True)
         self.token2id = self.word_dict.token2id
-        self.lda = LdaModel(self.tfidf[self.bows],num_topics=self.dim,minimum_probability=0)
+        #self.lda = LdaModel(self.tfidf[self.bows],num_topics=self.dim,minimum_probability=0)
+        self.lda = LsiModel(self.tfidf[self.bows],num_topics=self.dim)
         return self
     
     """
