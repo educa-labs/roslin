@@ -90,7 +90,6 @@ def project_loading():
 helper function, sets the output size the final layers of the model to k.
 '''
 def set_output(pipe,k):
-    print(pipe.named_steps)
     pipe.named_steps['output'].set_k(k)
     pipe.named_steps['tree'].set_k(k)
 
