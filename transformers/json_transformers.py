@@ -2,6 +2,7 @@ import json
 from functools import reduce
 from nltk import word_tokenize
 from unidecode import unidecode
+from collections import OrderedDict
 import pandas as pd
 
 '''
@@ -70,31 +71,36 @@ class JsonToTagsNumericalTransformer(JsonToTagsTransform):
         return ["{}:{}".format(key,value) for key, value in num_tag.items()]
 
 class JSONTransformer:
+
+    def __init__(self):
+        self.cols = []
+
     @staticmethod
     def clear(string):
         string = unidecode(string.lower().strip().replace(' ', '_'))
 
         return float(string) if string.replace('.', '', 1).isdigit() else string
 
-    @staticmethod
-    def preprocess_json(json):
+    def preprocess_json(self,json):
         new_json = []
 
         for instance in filter(lambda i: i['tags'] is not None and i['numerical_tags'] is not None, json):
-            new_instance = {}
+            new_instance = OrderedDict()
+            for col in self.cols:
+                new_instance[col] = None
             
             # Adding tags
             for (key, value) in map(lambda t: t.split(':'), instance['tags']):
                 key = JSONTransformer.clear(key)
 
-                if key not in new_instance:
+                if new_instance[key] is None:
                     new_instance[key] = JSONTransformer.clear(value)
 
             # Adding numerical_tags
             for (key, value) in instance['numerical_tags'].items():
                 key = JSONTransformer.clear(key)
 
-                if key not in new_instance:
+                if new_instance[key] is None:
                     new_instance[key] = float(value)
 
             new_json.append(new_instance)
@@ -116,10 +122,19 @@ class JSONTransformer:
         return pd.DataFrame.from_dict(df_dict)
 
     def fit(self, X=None, y=None):
+        for instance in filter(lambda i: i['tags'] is not None and i['numerical_tags'] is not None, X):
+            # Adding tags
+            for (key, _) in map(lambda t: t.split(':'), instance['tags']):
+                key = JSONTransformer.clear(key)
+                if key not in self.cols:
+                    self.cols.append(key)
+            for key in instance['numerical_tags']:
+                key = JSONTransformer.clear(key)
+                if key not in self.cols:
+                    self.cols.append(key)
         return self
     
     def transform(self, X=None):
-        preprocessed_json = JSONTransformer.preprocess_json(X)
+        preprocessed_json = self.preprocess_json(X)
         
         return JSONTransformer.json_to_df(preprocessed_json)
-      

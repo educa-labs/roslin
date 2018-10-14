@@ -5,6 +5,7 @@ import json as js
 import numpy as np
 import pandas as pd
 import pickle
+import math
 
 
 COLUMNS_WEIGHTS = {
@@ -101,26 +102,29 @@ def category_cols_to_codes(data_frame, cat_cols, cat_cols_codes=None):
             new_col = []
 
             for value in data_frame[col]:
-                # if value else 0 es un parche para nulos...
-                new_col.append(cat_cols_codes[col][value] if value else -1)
+                #  fixing the non consistency of nan equality.
+                if type(value) == float and math.isnan(value):
+                    new_col.append(-1)
+                else:
+                    new_col.append(cat_cols_codes[col][value] )
 
         data_frame[col] = new_col
 
-    data = js.load(open('data.json', encoding='utf-8'))
+    # data = js.load(open('data.json', encoding='utf-8'))
 
     # BEGIN nulls debug
-    nulls = []
+    # nulls = []
 
-    for col in data_frame.columns.values:
-        col_nulls = data_frame.loc[data_frame[col] == -1].index.values
+    # for col in data_frame.columns.values:
+    #     col_nulls = data_frame.loc[data_frame[col] == -1].index.values
 
-        if len(col_nulls) > 0:
-            nulls += [(null, col) for null in col_nulls]
+    #     if len(col_nulls) > 0:
+    #         nulls += [(null, col) for null in col_nulls]
 
-    nulls_ids = []
+    # nulls_ids = []
 
-    for null in nulls:
-        nulls_ids.append((map_to_id(data)[null[0]], null[1]))
+    # for null in nulls:
+    #     nulls_ids.append((map_to_id(data)[null[0]], null[1]))
 
     # print(nulls_ids)
     # END nulls debug
@@ -146,7 +150,6 @@ class GowerDistance:
     @staticmethod
     def con_dist(x_j, x_k, r_i):
         # Continuous distance function
-
         return 1 - np.divide(np.absolute(x_j - x_k), r_i)
 
     def __call__(self, X_j, X_k):
@@ -157,9 +160,9 @@ class GowerDistance:
                 X_j[self.cols_hash[col]], X_k[self.cols_hash[col]]))
 
         for col in self.con_cols:
+
             distance += np.dot(self.W_i[col], GowerDistance.con_dist(
                 X_j[self.cols_hash[col]], X_k[self.cols_hash[col]], self.R_i[col]))
-
         return distance / self.W_i_sum
 
 
@@ -183,15 +186,14 @@ class KNNPredictor(MongoSerializable):
         self.df, self.cat_cols_codes = category_cols_to_codes(
             df, self.cat_cols)
 
-        cols_hash = {col: i for i, col in enumerate(df.columns.values)}
+        cols_hash = {col: i for i, col in enumerate(self.df.columns.values)}
 
         W_i = COLUMNS_WEIGHTS
-        R_i = {col: np.max(df[col]) - np.min(df[col]) for col in self.con_cols}
-
+        R_i = {col: np.max(self.df[col]) - np.min(self.df[col]) for col in self.con_cols}
         gower_distance = GowerDistance(
             cols_hash, self.cat_cols, self.con_cols, W_i, R_i)
         metric = DistanceMetric.get_metric('pyfunc', func=gower_distance)
-        self.tree = BallTree(df, metric=metric)
+        self.tree = BallTree(self.df, metric=metric)
 
         return self
 
@@ -202,7 +204,6 @@ class KNNPredictor(MongoSerializable):
             cat_cols=self.cat_cols,
             cat_cols_codes=self.cat_cols_codes
         )
-
         prediction = self.tree.query(X, self.k)
 
         return prediction

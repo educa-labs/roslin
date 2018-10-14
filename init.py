@@ -3,7 +3,7 @@ import pickle
 
 from collections import OrderedDict
 from sklearn.pipeline import Pipeline
-from utils.json_utils import map_to_id, map_from_id
+from utils.json_utils import map_to_id, map_from_id, get_by_id
 
 from loaders.data_loader import load_data
 from loaders.models_loader import load_models
@@ -51,9 +51,4 @@ def init(clear=False):
 
 
 if __name__ == '__main__':
-    data = js.load(open('data.json', encoding='utf-8'))
-    model = KNN_BUILDER().fit(data)
-
-    example = data[map_from_id(data)['CTLY']]
-
-    model.predict([example])
+    init(clear=True)
