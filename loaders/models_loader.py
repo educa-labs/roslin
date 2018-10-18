@@ -5,9 +5,14 @@ import os
 import pickle
 
 
+# Key used to find the MongoDB uri in the env variables of the machine. If it      
+# exists, we are at a remote machine.
 MONGODB_URI_KEY = 'MONGODB_URI'
 
-
+'''
+Dumps the model and inserts it in the specified collection of the specified
+database using <key> as document key.
+'''
 def save(model, db_name, collection_name, key, client):
     db = client[db_name]
     collection = db[collection_name]
@@ -17,14 +22,20 @@ def save(model, db_name, collection_name, key, client):
 
     collection.insert(_object)
 
-
+'''
+Creates a filter to find for documents of key <key>.
+'''
 def build_filter(key):
     _filter = {}
     _filter[key] = {'$exists': True}
 
     return _filter
 
-
+'''
+Search into the collection for all the documents of key <key>. Since the documents
+are basically serialized models, it search for the last serialized model under this
+key.
+'''
 def load_model(collection, key):
     print('Finding model <{0}>'.format(key.upper()))
 
@@ -41,6 +52,12 @@ def load_model(collection, key):
         return pickle.loads(cursor[0][key])
 
 
+'''
+Connects to the database (local or remote) to find all models specified in <models>
+keys. If it doesn't find a given model, it trains and saves a new one. If <clear> is
+True, it will clear the specified collection before all the process, so he will
+train all the models from scratch.
+'''
 def load_models(collection_name, models, clear=False):
     loaded_models = OrderedDict()
 

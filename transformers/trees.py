@@ -8,6 +8,94 @@ import pickle
 import math
 
 
+'''
+wrapper for sklearn BallTree that can be added to a pipeline
+'''
+class BallTreePredictor:
+    def __init__(self, k=5, average=False):
+        self.tree = None
+        self.k = k
+        self.average = average
+
+    def set_k(self, k):
+        self.k = k
+
+    def fit(self, X, y=None):
+        self.tree = BallTree(X)
+        return self
+
+    def transform(self, X):
+        if not self.average:
+            return self.tree.query(X, self.k)
+        else:
+            return self.tree.query(np.array([np.mean(X, axis=0)]), self.k)
+
+
+'''
+Given a panda's DataFrame object, it returns the same given DataFrame but whose
+object type columns were changed to category type. This is useful because the
+API that pandas offer us in categorical type columns.
+'''
+def object_cols_to_category(data_frame):
+    # Set <object> dtype columns to <category>
+
+    cat_cols = data_frame.select_dtypes(include=['object']).columns.values
+
+    for col in cat_cols:
+        data_frame[col] = data_frame[col].astype('category')
+
+    return data_frame
+
+'''
+Given a panda's DataFrame object, it return the same given DataFrame but whose
+category type columns values were replaced by numerical values, using the
+pandas API "data_frame[col].cat.codes".
+'''
+def category_cols_to_codes(data_frame, cat_cols, cat_cols_codes=None):
+    # Set <category> dtype columns values to <int8>
+
+    if cat_cols_codes is None:
+        cat_cols_codes = {}
+
+        for col in cat_cols:
+            cat_code_mapping = {
+                cat: code
+                for cat, code in zip(data_frame[col], data_frame[col].cat.codes)
+            }
+
+            cat_cols_codes[col] = cat_code_mapping
+
+    for col in cat_cols:
+        # Checking null values.
+        if col not in data_frame:
+            new_col = [-1] * data_frame.shape[0]
+        else:
+            new_col = []
+
+            for value in data_frame[col]:
+                #  Checking null values.
+                if type(value) == float and math.isnan(value):
+                    new_col.append(-1)
+                else:
+                    new_col.append(cat_cols_codes[col][value] )
+
+        data_frame[col] = new_col
+
+    return data_frame, cat_cols_codes
+
+'''
+We are placing vector with categorical data in a continuos multi-dimensional
+vectorial space assignin a number to each one of the posibile values of those
+categories. To avoid give more weight to a given category value just by the
+order of how their values were given, we need a new distance metric.
+
+We decided to use Gower Distance (https://stats.stackexchange.com/questions/1731
+44/convert-categorical-data-to-numerical-data-to-compute-a-distance-then), which
+in fact allow us to decide arbitrari weight for each column. As default value we
+decided to weight by .66 all the categorical columns and by 1 all the numerical
+columns. Feel free to edit COLUMNS_WEIGHTS values as you see fit.
+'''
+
 COLUMNS_WEIGHTS = {
     'accesorios': .66,
     'color_cubierta': .66,
@@ -34,104 +122,6 @@ COLUMNS_WEIGHTS = {
     'volumetrias': .66,
 }
 
-
-class MongoSerializable:
-    def save(self, db_name, key):
-        with MongoClient() as client:
-            db = client[db_name]
-
-            _object = {}
-            _object[key] = pickle.dumps(self)
-
-            db.models.insert(_object)
-
-
-'''
-wrapper for sklearn BallTree that can be added to a pipeline
-'''
-class BallTreePredictor(MongoSerializable):
-    def __init__(self, k=5, average=False):
-        self.tree = None
-        self.k = k
-        self.average = average
-
-    def set_k(self, k):
-        self.k = k
-
-    def fit(self, X, y=None):
-        self.tree = BallTree(X)
-        return self
-
-    def transform(self, X):
-        if not self.average:
-            return self.tree.query(X, self.k)
-        else:
-            return self.tree.query(np.array([np.mean(X, axis=0)]), self.k)
-
-
-def object_cols_to_category(data_frame):
-    # Set <object> dtype columns to <category>
-
-    cat_cols = data_frame.select_dtypes(include=['object']).columns.values
-
-    for col in cat_cols:
-        data_frame[col] = data_frame[col].astype('category')
-
-    return data_frame
-
-
-def category_cols_to_codes(data_frame, cat_cols, cat_cols_codes=None):
-    # Set <category> dtype columns values to <int8>
-
-    if cat_cols_codes is None:
-        cat_cols_codes = {}
-
-        for col in cat_cols:
-            cat_code_mapping = {
-                cat: code
-                for cat, code in zip(data_frame[col], data_frame[col].cat.codes)
-            }
-
-            cat_cols_codes[col] = cat_code_mapping
-
-    for col in cat_cols:
-        # if col not in data_frame es un parche para nulos...
-        if col not in data_frame:
-            new_col = [-1] * data_frame.shape[0]
-        else:
-            new_col = []
-
-            for value in data_frame[col]:
-                #  fixing the non consistency of nan equality.
-                if type(value) == float and math.isnan(value):
-                    new_col.append(-1)
-                else:
-                    new_col.append(cat_cols_codes[col][value] )
-
-        data_frame[col] = new_col
-
-    # data = js.load(open('data.json', encoding='utf-8'))
-
-    # BEGIN nulls debug
-    # nulls = []
-
-    # for col in data_frame.columns.values:
-    #     col_nulls = data_frame.loc[data_frame[col] == -1].index.values
-
-    #     if len(col_nulls) > 0:
-    #         nulls += [(null, col) for null in col_nulls]
-
-    # nulls_ids = []
-
-    # for null in nulls:
-    #     nulls_ids.append((map_to_id(data)[null[0]], null[1]))
-
-    # print(nulls_ids)
-    # END nulls debug
-
-    return data_frame, cat_cols_codes
-
-
 class GowerDistance:
     def __init__(self, cols_hash, cat_cols, con_cols, W_i, R_i):
         self.cols_hash = cols_hash
@@ -150,6 +140,7 @@ class GowerDistance:
     @staticmethod
     def con_dist(x_j, x_k, r_i):
         # Continuous distance function
+
         return 1 - np.divide(np.absolute(x_j - x_k), r_i)
 
     def __call__(self, X_j, X_k):
@@ -160,13 +151,19 @@ class GowerDistance:
                 X_j[self.cols_hash[col]], X_k[self.cols_hash[col]]))
 
         for col in self.con_cols:
-
             distance += np.dot(self.W_i[col], GowerDistance.con_dist(
                 X_j[self.cols_hash[col]], X_k[self.cols_hash[col]], self.R_i[col]))
+
         return distance / self.W_i_sum
 
 
-class KNNPredictor(MongoSerializable):
+'''
+Wrapper for sklearn BallTree that can be added to a pipeline, but with a higher
+amout of logic. Basicly it receives to pandas DataFrame, it preprocess this
+data frame to obtain a new data frame with only numerical values, creates the
+metric distance and gives you necessary parameters to the BallTree predictor.
+'''
+class KNNPredictor:
     def __init__(self, k=5):
         self.k = k
 

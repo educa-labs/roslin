@@ -70,8 +70,12 @@ class JsonToTagsNumericalTransformer(JsonToTagsTransform):
     def taggize(num_tag):
         return ["{}:{}".format(key,value) for key, value in num_tag.items()]
 
+'''
+JSON to pandas DataFrame parser used by the KNN model. The resulting data frame
+has an equal amount of rows than objects in the JSON file and an equal amount of
+columns than the set of tags and numerical tags in the JSON file.
+'''
 class JSONTransformer:
-
     def __init__(self):
         self.cols = []
 
@@ -86,10 +90,11 @@ class JSONTransformer:
 
         for instance in filter(lambda i: i['tags'] is not None and i['numerical_tags'] is not None, json):
             new_instance = OrderedDict()
+
             for col in self.cols:
                 new_instance[col] = None
-            
-            # Adding tags
+
+            # Adding tags. This assumes tags are all categorical values
             for (key, value) in map(lambda t: t.split(':'), instance['tags']):
                 key = JSONTransformer.clear(key)
 
@@ -121,17 +126,27 @@ class JSONTransformer:
 
         return pd.DataFrame.from_dict(df_dict)
 
+    '''
+    Method necessary to remember the order in which the columns were seen by these
+    step of the pipeline. Remember de order is necessary because some null values
+    in our data.
+    '''
     def fit(self, X=None, y=None):
         for instance in filter(lambda i: i['tags'] is not None and i['numerical_tags'] is not None, X):
             # Adding tags
             for (key, _) in map(lambda t: t.split(':'), instance['tags']):
                 key = JSONTransformer.clear(key)
+                
                 if key not in self.cols:
                     self.cols.append(key)
+
+            # Adding numerical_tags
             for key in instance['numerical_tags']:
                 key = JSONTransformer.clear(key)
+
                 if key not in self.cols:
                     self.cols.append(key)
+
         return self
     
     def transform(self, X=None):
