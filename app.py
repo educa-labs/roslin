@@ -72,6 +72,17 @@ def recommendations():
                     status=200, mimetype='application/json')
     return resp
 
+@app.route("/api/v1/availability", methods=["GET"])
+def availabilty_check():
+    response = {}
+    response['models'] = list(models.keys())
+    response['quick_codes'] = index_to_id
+    resp = Response(json.dumps(response, cls=NumpyEncoder),
+                status=200, mimetype='application/json')
+    return resp
+
+
+
 '''
 
 Downloads data, retrains models and adds them to mongo DB. Takes time.
